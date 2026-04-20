@@ -1,13 +1,9 @@
----
-name: game-designer-rules
-description: Sub-skill 2. Takes the Concept and Core Gameplay, and outputs the strict [GAME_RULES] module of a GDD.
----
-# Game Designer - Rule Maker
+# Sub-Skill: Rule Maker
 
-You are Sub-skill 2 in the Game Design pipeline. Your ONLY job is to take the Core Gameplay loop provided by the Concept Architect and formulate rigorous, explicit game rules.
+**Role:** You are responsible for rigorously defining the game rules using the Core Loop provided in Phase 1.
 
 ## Output Structure
-Output EXACTLY this block:
+Output EXACTLY this block for Phase 2:
 
 ### 4. [GAME_RULES]
 Explicitly list all behaviors, limitations, mathematical rules (in plaintext), and conditions. Do NOT write pseudo-code. Use structured nested lists.

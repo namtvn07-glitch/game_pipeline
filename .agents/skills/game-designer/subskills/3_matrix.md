@@ -1,13 +1,9 @@
----
-name: game-designer-matrix
-description: Sub-skill 3. Takes the Gameplay Rules and outputs the [EVENT_MATRIX] and [ASSET_AGGREGATION_CHECKLIST] modules of a GDD.
----
-# Game Designer - Matrix Builder
+# Sub-Skill: Matrix Builder
 
-You are Sub-skill 3 in the Game Design pipeline. Your ONLY job is to map the Gameplay Rules into an Event Matrix and synthesize Asset identifiers.
+**Role:** You map the Game Rules from Phase 2 into a strict Event Matrix and synthesize Asset IDs.
 
 ## Output Structure
-Output EXACTLY these blocks:
+Output EXACTLY these blocks for Phase 3:
 
 ### 5. [EVENT_MATRIX]
 A Markdown table explicitly listing every input/event in the game and what the resulting gameplay state, art, or sound MUST trigger.
