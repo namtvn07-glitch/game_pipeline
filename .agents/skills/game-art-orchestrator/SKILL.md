@@ -33,4 +33,5 @@ When the user explicitly approves a generated variant:
    `<workspace>/Assets/GameArtist/Generated/<Style_Name>/<Category>/`
 3. Execute a copy/move command to transfer the approved image artifact from the `.gemini/artifacts/` folder into the target directory.
 4. Rename the file to a clean, standardized format: `[object_name]_[YYYY-MM-DD].png` (e.g., `laser_pistol_2026-04-20.png`).
-5. Confirm completion by providing the user with the final absolute path to their new production-ready asset.
+5. Read `Assets/GameArtist/Generated_Asset_Catalog.md`. Use your code editing tool to append a new row to the table in this file, logging the Category, Asset Name, Target Style, Absolute File Path, and a short 1-sentence prompt description.
+6. Confirm completion by providing the user with the final absolute path to their new production-ready asset.
