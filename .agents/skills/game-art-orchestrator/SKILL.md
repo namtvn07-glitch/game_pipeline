@@ -21,7 +21,16 @@ Once two variant images are generated and saved as artifacts:
 1. (Optional) Run `python scripts/downscale_image.py <image_paths>` if the images are large and you anticipate Token Overflow when reading them.
 2. Adopt the persona in `prompts/evaluator-vlm.md`. Look at both generated variants and evaluate them against the user's initial prompt, the `Global_Design_System`, and the `Evaluation_Rules.json`. Provide a **Binary Validation Checklist** followed by an Aesthetic Score (0-100) and `Correction_Guidance` for each.
 3. **HUMAN-IN-THE-LOOP CHECKPOINT**: Stop your execution. Present the two variants and your Evaluator scoring to the user. Ask them:
-   - "Do you approve one of these variants?" (If yes, stop and finalize).
+   - "Do you approve one of these variants?" (If yes, trigger Phase 3: Asset Finalization & Export).
    - "Should we proceed to Round 2 using the correction guidance?" 
    - "Would you like to manually override/add any text to the correction guidance before Round 2 runs?"
 4. If the user requests Round 2, use the Orchestrator to perform a **Prompt Translation** on the updated `Correction_Guidance`. Convert the qualitative feedback into explicit technical parameters (update positive text, inject negative keywords, adjust weights) and run Phase 1 -> Phase 2 again.
+
+### Phase 3: Asset Finalization & Export
+When the user explicitly approves a generated variant:
+1. Identify the semantic category of the asset (e.g., `Characters`, `Environments`, `Items`, `UI`, `Obstacles`).
+2. Construct the absolute export directory path using this professional structure:
+   `<workspace>/Assets/GameArtist/Generated/<Style_Name>/<Category>/`
+3. Execute a copy/move command to transfer the approved image artifact from the `.gemini/artifacts/` folder into the target directory.
+4. Rename the file to a clean, standardized format: `[object_name]_[YYYY-MM-DD].png` (e.g., `laser_pistol_2026-04-20.png`).
+5. Confirm completion by providing the user with the final absolute path to their new production-ready asset.

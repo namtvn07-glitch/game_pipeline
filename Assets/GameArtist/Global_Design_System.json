@@ -1,12 +1,21 @@
 {
-  "global_lighting": "Strictly from Top-Left corner at a 45-degree angle. Volumetric lighting must adhere to this global direction regardless of local style.",
+  "global_lighting": "Flat or simple gradient lighting suitable for 2D parallax side-scrollers. Avoid heavy realistic volumetric shadows.",
   "background_rules": "All generated isolated objects must sit on a pure #FFFFFF white or solid neutral gray background to easily key out.",
   "dimension_rules": {
     "Icons": "Must occupy exactly 80% of the canvas framing, perfectly centered",
-    "Characters": "Full-body visibility, grounded at the bottom 10% of the canvas"
+    "Characters": "Full body visibility, drawn strictly from a side-view profile (facing right)",
+    "Obstacles": "Designed as vertical pillars expanding from top or bottom edges, with clear horizontal path gaps"
   },
+  "perspective_rules": "Strictly 2D side-profile (orthographic projection). Absolutely no 3D depth, isometric angles, or top-down perspective.",
   "rarity_color_codes": {
-    "Epic": ["Purple", "Magenta"],
-    "Legendary": ["Gold", "Orange", "Yellow"]
+    "Epic": [
+      "Purple",
+      "Magenta"
+    ],
+    "Legendary": [
+      "Gold",
+      "Orange",
+      "Yellow"
+    ]
   }
 }
