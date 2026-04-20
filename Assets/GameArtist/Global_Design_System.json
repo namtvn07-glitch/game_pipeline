@@ -1,0 +1,12 @@
+{
+  "global_lighting": "Strictly from Top-Left corner at a 45-degree angle. Volumetric lighting must adhere to this global direction regardless of local style.",
+  "background_rules": "All generated isolated objects must sit on a pure #FFFFFF white or solid neutral gray background to easily key out.",
+  "dimension_rules": {
+    "Icons": "Must occupy exactly 80% of the canvas framing, perfectly centered",
+    "Characters": "Full-body visibility, grounded at the bottom 10% of the canvas"
+  },
+  "rarity_color_codes": {
+    "Epic": ["Purple", "Magenta"],
+    "Legendary": ["Gold", "Orange", "Yellow"]
+  }
+}
