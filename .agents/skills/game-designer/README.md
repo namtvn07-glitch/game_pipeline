@@ -38,6 +38,11 @@ Khi bấm gửi các câu lệnh trên, bạn sẽ thấy AI tiến hành chạy
 
 1. **Phase 1 (Concept - Ý tưởng):** Phát triển Pitch giới thiệu. Liệt kê công khai các tính năng bị gạch bỏ (Discarded) để ngăn chặn dự án bị bôi vẽ (Scope Creep).
 2. **Phase 2 (Rules - Luật):** Không bay bổng nghệ thuật, AI ép sát Gameplay thành các luật vật lý và điều kiện thắng/thua thô ráp.
-3. **Phase 3 (Matrix - Ma trận):** Dịch Luật thành 1 Bảng Ma trận Sự Kiện (Event Matrix). Gắn mỗi sự kiện với 1 tên Asset ID riêng biệt (`VFX_Poof_01`, `SFX_Win_02`).
+3. **Phase 3 (Matrix - Ma trận):** 
+   - Dịch Luật thành 1 Bảng Ma trận Sự Kiện (Event Matrix) chứa toàn bộ Art/VFX/SFX ID. 
+   - Đóng gói toàn bộ Nút bấm và Màn hình Menu thành sơ đồ UI Architecture chi tiết.
+   - Phân rã nhóm tài nguyên trong danh sách thành các cấu trúc Category độc lập (Static Art, VFX, Sound, UI).
 
-Tiến trình kết thúc bằng việc tạo ra 1 Markdown File hoàn chỉnh để bạn duyệt và sử dụng chia Task trên Trello/Jira.
+Tiến trình kết thúc bằng thao tác gán tự động **Auto-Export Split**:
+- Tạo ra 1 file Master Document `[ProjectName]_GDD.md` hoàn chỉnh lưu thẳng vào gốc thư mục dự án con hiện hành.
+- **Tính năng mở rộng:** Băm toàn bộ Checklist Thiết kế thành 4 file Data rác độc lập (`_Art_Assets.json`, `_VFX_Assets.json`, `_Audio_Assets.json`, `_UI_Assets.json`) đi kèm để tích hợp thẳng vào khay chứa của AI Game Artist và Unity Engine.

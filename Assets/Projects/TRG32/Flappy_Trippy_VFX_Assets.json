@@ -1,0 +1,56 @@
+[
+  {
+    "id": "VFX_MuzzleFlash",
+    "description": "Flash effect at gun barrel when firing",
+    "duration_sec": 0.2,
+    "particle_density": "Low"
+  },
+  {
+    "id": "VFX_HitSpark",
+    "description": "Sparks flying when projectile connects with block",
+    "duration_sec": 0.3,
+    "particle_density": "Medium"
+  },
+  {
+    "id": "VFX_BlockDestroy",
+    "description": "Block shattering into pieces",
+    "duration_sec": 0.5,
+    "particle_density": "High"
+  },
+  {
+    "id": "VFX_PlayerDeath",
+    "description": "Player character crashing explosion",
+    "duration_sec": 1.0,
+    "particle_density": "High"
+  },
+  {
+    "id": "VFX_Explosion_Area",
+    "description": "Large area effect blast from explosive block",
+    "duration_sec": 0.6,
+    "particle_density": "High"
+  },
+  {
+    "id": "VFX_ShieldBreak",
+    "description": "Energy scattering when shield block loses shield",
+    "duration_sec": 0.4,
+    "particle_density": "Medium"
+  },
+  {
+    "id": "VFX_CoinCollect",
+    "description": "Sparkle effect when coin is gathered",
+    "duration_sec": 0.3,
+    "particle_density": "Low"
+  },
+  {
+    "id": "VFX_PowerupCollect",
+    "description": "Burst of energy when powerup is picked up",
+    "duration_sec": 0.5,
+    "particle_density": "Medium"
+  },
+  {
+    "id": "VFX_BubbleShield_Active",
+    "description": "Persistent spherical shield around player",
+    "duration_sec": -1,
+    "particle_density": "Low"
+  }
+]

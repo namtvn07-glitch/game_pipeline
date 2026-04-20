@@ -1,27 +1,64 @@
 # Sub-Skill: Matrix Builder
 
-**Role:** You map the Game Rules from Phase 2 into a strict Event Matrix and synthesize Asset IDs.
+**Role:** You map the Game Rules from Phase 2 into a strict Event Matrix, an explicit UI Architecture, and synthesize a rigorously typed list of required Asset IDs conforming to Phase 1 constraints.
 
 ## Output Structure
 Output EXACTLY these blocks for Phase 3:
 
-### 5. [EVENT_MATRIX]
-A Markdown table explicitly listing every input/event in the game and what the resulting gameplay state, art, or sound MUST trigger.
-You must invent standard Asset IDs (e.g., `VFX_Hit_01`, `SFX_Win_02`) to ensure traceability.
+### 9. [EVENT_MATRIX]
+A Markdown table explicitly listing every input/state transition and what gameplay result it MUST trigger, mapped against the rules from Phase 2. include all state changes, VFX, and SFX.
 
-| In-Game Event | Gameplay Result | Art Assignment (Asset_ID) | Sound Assignment (Asset_ID) |
+| In-Game Event | Gameplay Result | Art/VFX Map (Asset_ID) | Sound Map (Asset_ID) |
 | --- | --- | --- | --- |
-| Tap Screen | Character Jumps up | `VFX_Jump_01` | `SFX_Jump_01` |
+| Player Taps Screen | Trigger `Jump_Impulse` | `SPR_Player_Jump`, `VFX_JumpDust` | `SFX_Jump_01` |
 
-### 6. [ASSET_AGGREGATION_CHECKLIST]
+### 10. [UI_ARCHITECTURE]
+A detailed Markdown section describing every UI Screen Flow. You MUST explicitly state the Anchor and the Transition Flow.
+Example:
+- **Home Screen (`UI_Panel_Home`):** Center Anchor.
+  - `UI_Btn_Play`: Central play icon. Action: Transition to `UI_Panel_HUD` and trigger `Play` state.
+  - `UI_Btn_Settings`: Top Right anchor. Action: Open `UI_Panel_Settings` popup.
+
+### 11. [ASSET_AGGREGATION_CHECKLIST]
+You MUST meticulously list out all assets mentioned across all phases. Segregate them cleanly into distinct JSON arrays.
+**CRITICAL:** You MUST adhere to these strict schemas for each category. Do not omit any field.
+
 ```json
-// Summarize every Asset_ID declared in the EVENT_MATRIX
 {
-  "ART_ASSETS": [
-    { "id": "VFX_Jump_01", "description": "Visual effect for jumping" }
+  "STATIC_ART": [
+    { 
+      "id": "SPR_Player_Idle", 
+      "description": "Main character idle sprite",
+      "dimensions": "512x512",
+      "format": "png",
+      "animation_frames": 1
+    }
+  ],
+  "VFX_ASSETS": [
+    { 
+      "id": "VFX_JumpDust", 
+      "description": "Smoke puff when jumping",
+      "duration_sec": 0.5,
+      "particle_density": "Low"
+    }
   ],
   "SOUND_ASSETS": [
-    { "id": "SFX_Jump_01", "description": "Audio cue for jumping" }
+    { 
+      "id": "SFX_Jump_01", 
+      "description": "Audio cue for jump bounce",
+      "layer": "SFX",
+      "loop_flag": false,
+      "format": "wav"
+    }
+  ],
+  "UI_ASSETS": [
+    { 
+      "id": "UI_Btn_Play", 
+      "description": "Play button graphic",
+      "dimensions": "256x256",
+      "format": "png",
+      "animation_frames": 2
+    }
   ]
 }
 ```

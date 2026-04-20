@@ -4,13 +4,11 @@
     "Does the shape and geometry accurately reflect the prompt?"
   ],
   "aesthetic_must_haves": [
-    "Strictly black and white",
     "Clean, crisp black ink outlines",
     "Pure white background",
-    "Uncolored interior shapes"
+    "Flat colored interior shapes"
   ],
   "aesthetic_forbidden": [
-    "Any presence of color",
     "Gradients, soft shading, or greyscale tones",
     "Photorealism or 3D rendering elements",
     "Messy, overly sketchy pencil lines"

@@ -1,6 +1,6 @@
 {
   "lineart.jpg": {
-    "caption": "A detailed object with crisp black and white line art. clean black outlines, high contrast, pure white background, uncolored, minimalist aesthetic.",
+    "caption": "A detailed object with crisp colored line art. clean black outlines, high contrast, pure white background, colored, minimalist aesthetic.",
     "vector": [
       -0.007894894108176231,
       0.08663493394851685,
@@ -390,7 +390,7 @@
     "is_archetype": true
   },
   "lineart(1).jpg": {
-    "caption": "A character illustration featuring crisp black and white line art. thick black outlines, pure white background, uncolored, comic book styling.",
+    "caption": "A character illustration featuring crisp colored line art. thick black outlines, pure white background, colored, comic book styling.",
     "vector": [
       -0.018627222627401352,
       -0.0038334690034389496,
@@ -780,7 +780,7 @@
     "is_archetype": false
   },
   "lineart(2).jpg": {
-    "caption": "An intricate prop design drawing in crisp black and white line art. precise ink drawing, clean outlines, pure white background, uncolored.",
+    "caption": "An intricate prop design drawing in crisp colored line art. precise ink drawing, clean outlines, pure white background, colored.",
     "vector": [
       -0.057446740567684174,
       0.02703731879591942,
@@ -1170,7 +1170,7 @@
     "is_archetype": false
   },
   "lineart(3).jpg": {
-    "caption": "An environment line sketch in crisp black and white line art. consistent stroke weight, sharp ink lines, pure white background, minimalist.",
+    "caption": "An environment line sketch in crisp colored line art. consistent stroke weight, sharp ink lines, pure white background, minimalist.",
     "vector": [
       -0.05273823440074921,
       0.013261652551591396,
@@ -1560,7 +1560,7 @@
     "is_archetype": false
   },
   "lineart(4).jpg": {
-    "caption": "A vehicle rendering shown in crisp black and white line art. geometric precision, dark black ink lines, pure white background, no shading.",
+    "caption": "A vehicle rendering shown in crisp colored line art. geometric precision, dark black ink lines, pure white background, no shading.",
     "vector": [
       -0.05039309710264206,
       0.0454229861497879,
@@ -1950,7 +1950,7 @@
     "is_archetype": false
   },
   "lineart(5).jpg": {
-    "caption": "A fantasy weapon sketch using crisp black and white line art. solid shapes built from thin precise outlines, pure white background, uncolored.",
+    "caption": "A fantasy weapon sketch using crisp colored line art. solid shapes built from thin precise outlines, pure white background, colored.",
     "vector": [
       -0.025841722264885902,
       0.05961385369300842,
@@ -2340,7 +2340,7 @@
     "is_archetype": false
   },
   "lineart(6).jpg": {
-    "caption": "A portrait drawing drawn in crisp black and white line art. sharp vector-like linework, black ink, pure white background, flat profile.",
+    "caption": "A portrait drawing drawn in crisp colored line art. sharp vector-like linework, black ink, pure white background, flat profile.",
     "vector": [
       -0.03717479854822159,
       0.023008324205875397,
@@ -2730,7 +2730,7 @@
     "is_archetype": true
   },
   "lineart(7).jpg": {
-    "caption": "A mechanical device illustration utilizing crisp black and white line art. technical drawing style, black strokes, pure white background, uncolored.",
+    "caption": "A mechanical device illustration utilizing crisp colored line art. technical drawing style, black strokes, pure white background, colored.",
     "vector": [
       -0.08376863598823547,
       0.01516746450215578,
@@ -3120,7 +3120,7 @@
     "is_archetype": false
   },
   "lineart(8).jpg": {
-    "caption": "A monster creature design in crisp black and white line art. varied line weights, bold black outlines, pure white background, no gradients.",
+    "caption": "A monster creature design in crisp colored line art. varied line weights, bold black outlines, pure white background, no gradients.",
     "vector": [
       -0.046178340911865234,
       0.038273997604846954,
@@ -3510,7 +3510,7 @@
     "is_archetype": false
   },
   "lineart(9).jpg": {
-    "caption": "A magic artifact rendered in crisp black and white line art. symmetrical design, solid black ink lines, pure white background, flat and uncolored.",
+    "caption": "A magic artifact rendered in crisp colored line art. symmetrical design, solid black ink lines, pure white background, flat and colored.",
     "vector": [
       -0.07792868465185165,
       0.05868156999349594,
@@ -3900,7 +3900,7 @@
     "is_archetype": false
   },
   "lineart(10).jpg": {
-    "caption": "A sci-fi armor piece sketched with crisp black and white line art. intricate detail lines, strong black borders, pure white background, uncolored.",
+    "caption": "A sci-fi armor piece sketched with crisp colored line art. intricate detail lines, strong black borders, pure white background, colored.",
     "vector": [
       -0.10973307490348816,
       0.11142147332429886,

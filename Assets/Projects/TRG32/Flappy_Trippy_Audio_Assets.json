@@ -1,0 +1,79 @@
+[
+  {
+    "id": "SFX_Shoot_01",
+    "description": "Weapon fire sound",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_Hit_Block",
+    "description": "Impact sound on block",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_BlockBreak",
+    "description": "Block breaking completely",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_PlayerDeath",
+    "description": "Impact/Death sound for player",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_ScoreUp",
+    "description": "Positive chime for passing a pillar",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_Explosion_Large",
+    "description": "Deep boom for explosive block",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_ShieldShatter",
+    "description": "Glass/energy shattering sound",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_CoinPick",
+    "description": "Coin pickup chime",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "BGM_MainLoop",
+    "description": "High tempo energetic gameplay music",
+    "layer": "BGM",
+    "loop_flag": true,
+    "format": "mp3"
+  },
+  {
+    "id": "SFX_Powerup_Collect",
+    "description": "Powerup collection sound",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  },
+  {
+    "id": "SFX_Booster_Equip",
+    "description": "Sound when equipping a booster pre-game or in-game",
+    "layer": "SFX",
+    "loop_flag": false,
+    "format": "wav"
+  }
+]

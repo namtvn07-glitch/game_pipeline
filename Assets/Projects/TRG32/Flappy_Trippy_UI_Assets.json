@@ -1,0 +1,93 @@
+[
+  {
+    "id": "UI_Btn_Play",
+    "description": "Play button",
+    "dimensions": "256x256",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Pause",
+    "description": "Pause icon",
+    "dimensions": "128x128",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Resume",
+    "description": "Resume icon button",
+    "dimensions": "256x256",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Quit",
+    "description": "Quit/Home icon button",
+    "dimensions": "256x256",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Replay",
+    "description": "Restart/Replay icon button",
+    "dimensions": "256x256",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Txt_Coins",
+    "description": "Coin icon next to counter",
+    "dimensions": "64x64",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Txt_Score",
+    "description": "Score display background",
+    "dimensions": "512x128",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Panel_Home",
+    "description": "Main menu background panel",
+    "dimensions": "1080x1920",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Panel_GameOver",
+    "description": "GameOver popup background",
+    "dimensions": "800x800",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_ScorePop",
+    "description": "Floating text effect for score or damage numbers",
+    "dimensions": "128x64",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Booster_Shield",
+    "description": "Equip shield booster button",
+    "dimensions": "128x128",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Booster_Freeze",
+    "description": "Equip freeze booster button",
+    "dimensions": "128x128",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Booster_Magnet",
+    "description": "Equip magnet booster button",
+    "dimensions": "128x128",
+    "format": "png",
+    "animation_frames": 1
+  }
+]
