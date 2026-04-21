@@ -16,13 +16,16 @@ This skill acts as a robust Data Ingestion Pipeline for your game artist workflo
 - Verify the directory exists via `list_dir`.
 - **LEGACY CLEANUP**: If a file named `DNA_Profile.md` exists in this folder, you MUST delete it. It is a deprecated V1 format. Do NOT leave it behind, as it will pollute the system.
 
-### 2. VLM Semantic Tagging
+### 2. VLM Semantic Tagging (RAG-Optimized)
 - Process all valid image files (`.png`, `.jpg`, `.jpeg`) inside the folder.
 - Execute a VLM check (e.g. via Gemini/Flash) for EACH image.
-- Ask the VLM to produce a dense 1-2 sentence caption that strictly describes:
-  1. The exact physical object (e.g. "Space helmet with visor")
-  2. The unique aesthetic identifiers (e.g. "high contrast neon green lighting, thick outline art style")
-- Keep a JSON array in memory or disk containing: `[{"filename":"...", "caption":"..."}]`
+- Ask the VLM to produce a highly dense, searchable string (Embedding-Ready) instead of loose sentences. It must explicitly extract:
+  1. **Shape Language** (e.g. rounded, sharp)
+  2. **Material** (e.g. metallic, plastic, flat-color)
+  3. **Complexity Level** / Rarity (e.g. basic, highly detailed)
+  4. **Color Palette** (e.g. neon green, high contrast)
+- Also generate a **RAG Hook Tag** (e.g. `"tag: UI_Icon, material: metallic, rarity: epic, visibility: high_contrast"`).
+- Keep a JSON array in memory or disk containing: `[{"filename":"...", "semantic_metadata":"..."}]`
 
 ### 3. Generate Local Embeddings & Archetype Schema
 - Save the JSON array from Step 2 into a temporary file or pass it to our embedding script.
@@ -30,18 +33,29 @@ This skill acts as a robust Data Ingestion Pipeline for your game artist workflo
 - **The Script will automatically**: Use `sentence-transformers` locally to calculate text embeddings, find the mathematical centroid, assign `is_archetype: true` to the 2 images closest to the centroid, and output the absolute `style_index.json` to the target folder.
 
 ### 4. Synthesize DNA and Rule Files
-- Collect the macro conclusions from analyzing the full image batch and separate them into two strict files:
+- Collect the macro conclusions from analyzing the full image batch and separate them into two strict files optimized for RAG retrieval and Semantic Search:
   
   **A. `Generation_DNA.md`**
-  Write this file using `write_to_file` into the style directory. It should ONLY contain positive explicit instructions and negative safeguards specifically designed to be injected into an Image Gen payload. Exclude all evaluation-only metrics.
+  Write this file using `write_to_file` into the style directory. It must use strict nested Markdown headings (for text-splitters) containing the following three pillars:
+  - **`# I. VISUAL DNA`**: Consistency rules, Shape Language, Color Script (Rarity), and Material Polish.
+  - **`# II. PRODUCT LOGIC`**: Readability (3-Second Rule), Progression Logic (Level upgrades), The Juice (Animation states), and UI Interaction rules (if applicable).
+  - **`# III. TECHNICAL EXCELLENCE`**: Mesh / Topology rules, Texel Density, Modular design / Recolor limits.
+  Include positive anchors and strict negative safeguards under these headings.
   
   **B. `Evaluation_Rules.json`**
-  Write this file using `write_to_file` into the style directory. It must be a strict JSON schema that the Evaluator VLM can read:
+  Write this file using `write_to_file` into the style directory. It must conform to this schema:
   ```json
   {
-    "physical_checklist_template": ["Is the object accurately represented?", "Does it match the core geometry?"],
-    "aesthetic_must_haves": ["Feature X", "Color Y"],
-    "aesthetic_forbidden": ["Forbidden Feature Z"]
+    "semantic_metadata": {
+      "supported_types": ["asset", "ui"],
+      "vector_keywords": ["list", "of", "dense", "visual", "keywords"]
+    },
+    "evaluation_criteria": {
+      "visual_dna": ["Are shapes consistent?", "Does it match standard rarity palettes?"],
+      "product_logic": ["Does it pass the 3-second readability rule?"],
+      "technical_excellence": ["Are details readable at thumbnail size?"]
+    },
+    "forbidden_elements": ["List of anti-patterns"]
   }
   ```
 

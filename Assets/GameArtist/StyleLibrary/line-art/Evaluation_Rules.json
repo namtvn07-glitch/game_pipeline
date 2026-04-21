@@ -1,16 +1,45 @@
 {
-  "physical_checklist_template": [
-    "Is the core object definitively recognizable?",
-    "Does the shape and geometry accurately reflect the prompt?"
-  ],
-  "aesthetic_must_haves": [
-    "Clean, crisp black ink outlines",
-    "Pure white background",
-    "Flat colored interior shapes"
-  ],
-  "aesthetic_forbidden": [
-    "Gradients, soft shading, or greyscale tones",
-    "Photorealism or 3D rendering elements",
-    "Messy, overly sketchy pencil lines"
+  "semantic_metadata": {
+    "supported_types": [
+      "asset",
+      "ui",
+      "prop",
+      "character_concept"
+    ],
+    "vector_keywords": [
+      "lineart",
+      "cel_shaded",
+      "flat_color",
+      "sharp_contours",
+      "ink_outlines",
+      "monochromatic",
+      "vector_illustration"
+    ]
+  },
+  "evaluation_criteria": {
+    "visual_dna": [
+      "Are shapes strictly geometrically consistent and sharply defined?",
+      "Does the asset maintain a consistent heavy outer stroke weight?",
+      "Are internal details drawn with thinner, secondary strokes?",
+      "Does the color palette map correctly to standard (single accent) or epic (neon highlights) rarities?"
+    ],
+    "product_logic": [
+      "Does the silhouette convey the asset's function within the 3-second readability rule?",
+      "Is negative space correctly preserved?",
+      "If upgraded, does it maintain the original bounding silhouette?"
+    ],
+    "technical_excellence": [
+      "Are all line details crisp and perfectly legible at 64x64px thumbnail size?",
+      "Are colors purely flat and cel-shaded without anti-aliasing blur or unwanted gradients?",
+      "Are ink layers clearly separated visually from color fills allowing modular recoloring?"
+    ]
+  },
+  "forbidden_elements": [
+    "Soft gradients",
+    "Blurry airbrush shadowing",
+    "Photorealistic textures",
+    "Metallic shader reflections",
+    "Broken or faded outlines",
+    "Over-complicated noise patterns that break thumbnail legibility"
   ]
 }
