@@ -1,92 +1,92 @@
 [
   {
     "id": "UI_Btn_Play",
-    "description": "Play button",
+    "description": "State transition element (Init)",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Btn_Pause",
-    "description": "Pause icon",
+    "description": "State transition element (Halt)",
     "dimensions": "128x128",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Btn_Resume",
-    "description": "Resume icon button",
+    "description": "State transition element (Resume)",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Btn_Quit",
-    "description": "Quit/Home icon button",
+    "description": "State transition element (Home routing)",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Btn_Replay",
-    "description": "Restart/Replay icon button",
+    "description": "State transition element (Restart loop)",
+    "dimensions": "256x256",
+    "format": "png",
+    "animation_frames": 1
+  },
+  {
+    "id": "UI_Btn_Home_Return",
+    "description": "State transition element (Post-game Home)",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Txt_Coins",
-    "description": "Coin icon next to counter",
+    "description": "Currency render geometry",
     "dimensions": "64x64",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Txt_Score",
-    "description": "Score display background",
+    "description": "Metric calculation geometry layer",
     "dimensions": "512x128",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Panel_Home",
-    "description": "Main menu background panel",
+    "description": "Menu background topology",
     "dimensions": "1080x1920",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_Panel_GameOver",
-    "description": "GameOver popup background",
+    "description": "Termination metric logic overlay",
     "dimensions": "800x800",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "UI_ScorePop",
-    "description": "Floating text effect for score or damage numbers",
+    "description": "Dynamic evaluation metric text render",
     "dimensions": "128x64",
     "format": "png",
     "animation_frames": 1
   },
   {
-    "id": "UI_Btn_Booster_Shield",
-    "description": "Equip shield booster button",
-    "dimensions": "128x128",
+    "id": "UI_Txt_Combo",
+    "description": "Consecutive evaluation metric render",
+    "dimensions": "128x64",
     "format": "png",
     "animation_frames": 1
   },
   {
-    "id": "UI_Btn_Booster_Freeze",
-    "description": "Equip freeze booster button",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Btn_Booster_Magnet",
-    "description": "Equip magnet booster button",
-    "dimensions": "128x128",
+    "id": "UI_Panel_PhaseUp",
+    "description": "Phase escalation logic dynamic popup",
+    "dimensions": "512x256",
     "format": "png",
     "animation_frames": 1
   }

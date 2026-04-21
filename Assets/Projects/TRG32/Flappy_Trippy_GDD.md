@@ -4,150 +4,163 @@
 ```json
 {
   "ProjectName": "Flappy_Trippy",
-  "Genre": "2D Action / Endless Runner / Shoot 'em up",
+  "Genre": "2D Action / Arcade Runner / Shoot 'em up",
   "TargetAudience": "Mass market (Hybrid-Casual)",
   "USP": "A hybrid-casual endless runner where the player actively shoots to clear obstacles, and the weapon's recoil acts as the core jump/flight mechanic."
 }
 ```
 
 ### 2. [DISCARDED_FEATURES]
-- **Complex Gacha & Multiple Currencies:** Stripped down to a simple coin collection and single skin unlock to keep it as an MVP prototype.
-- **Intricate Daily Quests:** Kept to basic "Play 1 Game" or "Collect Coins" for MVP instead of a 9-day streak system.
-- **Deep Shop Bundles:** Cut real-money IAP integration for MVP; strictly using in-game coins for boosters first.
+- **Complex UI Trees:** Cut deep nested menus. Everything connects back to a single `UI_Panel_Home` to adhere to zero-friction onboarding.
+- **Complex RPG Pet Systems/Gacha:** Removed to avoid runtime hitbox clutter and progression bloat.
+- **Save/Load State Interpolation:** Run-based loop only stores meta-progression currency (`coin_balance`), resetting level architecture on every boot.
 
 ### 3. [TECHNICAL_CONSTRAINTS]
-- **Platform/Engine:** Unity Mobile (iOS/Android)
+- **Platform/Engine:** Unity Mobile (C#)
 - **Orientation:** Portrait (9:16)
-- **File Size/Memory Limits:** Under 50MB (Targeted for fast download / Hybrid-casual standard)
+- **File Size/Memory Limits:** Under 50MB. Framerate: 60fps on standard low-end devices, mandating rigid Object Pooling implementation for all `VFX`, `Projectiles`, and `Blocks`.
 
 ### 4. [CROSS_DEPARTMENT_SYNC]
 - **Naming Conventions:** 
   - Art: `SPR_[Entity]_[State]` (e.g., `SPR_Trippybara_Idle`)
   - Audio: `SFX_[Action]_[Variation]` (e.g., `SFX_Shoot_01`)
-  - VFX: `VFX_[Action]_[Variation]` (e.g., `VFX_Explosion_Small`)
+  - VFX: `VFX_[Action]_[Variation]` (e.g., `VFX_FeverAura`)
   - UI: `UI_[Element]_[Name]` (e.g., `UI_Btn_Play`)
-- **Communication Handshake:** Dev must use string tags matching exact Asset IDs. The game logic will trigger events that pass these string IDs to the `AudioManager` or `VFXManager`.
+- **Communication Handshake:** Dev must bind events using pure string identifiers mapping identically to the `id` field in Asset JSONs. System events broadcast strings to a decoupled `AudioManager` or `VFXManager`.
 
 ### 5. [CORE_GAMEPLAY]
-The game uses an auto-scrolling portrait side-view camera. 
-The player controls "Trippybara", a character that constantly falls due to gravity. The player taps the screen to fire a horizontal projectile entirely straight ahead. The physical recoil of this shot pushes Trippybara up (acting as a "flap" or jump mechanic). 
-Pillars consisting of various vertical blocks appear from the right. Instead of just avoiding small gaps, the player is encouraged to blast away the blocks, whittling down their HP to create their own safe passage. The rhythm is frantic and action-oriented, demanding rapid tapping to shoot and maintain height while focusing fire on specific blocking targets.
+The game engine continuously scrolls the environment horizontally across a portrait camera while applying vertical gravity to the player entity ("Trippybara").
+Input is strictly atomic: tapping the screen triggers a horizontal projectile launch. The physical recoil (Newton's Third Law abstraction) of this launch imparts an upward vertical impulse to the player.
+As the player moves, vertical arrangements of destructible blocks spawn organically. The player is forced to shoot blocking units to formulate safe geographical passages. 
+**Pacing modifiers:** To prevent extreme fire-rate abuse, a Diminishing Recoil system reduces vertical lift during rapid-fire, shifting the player into a smooth hovering state. Destruction actions fill a Combo meter. Once maximized, Fever Mode triggers—fixing the player precisely to the viewport center with invincible status, replacing manual input with an auto-firing laser beam that destroys any entity, while dynamically pulling currency to the center. Surviving 50 column cycles increments the global Phase, altering scroll velocities and instantiating a "Warning Wall" hurdle.
 
 ### 6. [GAME_STATE_MACHINE]
-- `Init`: The state when the game first loads (loading assets, initializing poolers). Transitions to `Home` when complete.
-- `Home`: The state before the game starts. Shows UI Menu. Transitions to `Play` on `UI_Btn_Play` tap.
-- `Play`: The active gameplay loop with scrolling obstacles and gravity enabled. Transitions to `GameOver` on death condition, or `Pause` on `UI_Btn_Pause` tap.
-- `Pause`: The state when gameplay is interrupted. TimeScale set to 0. Transitions to `Play` on resume.
-- `GameOver`: The state when the player reaches a Loss condition. Shows score and replay button. Transitions to `Play` on `UI_Btn_Replay` tap.
+- `Init`: System bootstrapper. Instantiates Object Pools, fetches player configuration DB. Transition -> `Home`.
+- `Home`: Neutral wait state rendering `UI_Panel_Home`. TimeScale is nominal. Transition -> `Play` via `UI_Btn_Play` interaction.
+- `Play`: Active progression state. Simulation time active. Collisions and bounds detection active. Transition -> `Pause` via `UI_Btn_Pause`, or `GameOver` upon fatal collision rules.
+- `Pause`: Interrupt state. TimeScale = 0. Simulation frozen. Transition -> `Play` via `UI_Btn_Resume`, or `Home` via `UI_Btn_Quit`.
+- `GameOver`: Run termination state. Stops scrolling. Evaluates metrics. Transition -> `Play` via `UI_Btn_Replay` or `Home` via `UI_Btn_Home_Return`.
 
 ### 7. [SYSTEM_VARIABLES]
-- `player_gravity` (float): The downward force applied to the player per frame.
-- `recoil_impulse` (float): The upward force applied to the player upon tapping/shooting.
-- `fire_cooldown` (float): Minimum time between consecutive shots.
-- `projectile_speed` (float): Horizontal velocity of the fired bullet.
-- `projectile_damage` (float): Base damage of the bullet (Default: 1.0).
-- `scroll_speed` (float): The horizontal speed at which columns move leftwards.
-- `block_base_hp` (float): Base HP for a standard block.
-- `score_current` (int): Player's score for the current run.
-- `coin_balance` (int): Player's hard currency for purchasing boosters.
-- `obstacle_spawn_rate` (float): Time interval in seconds to randomly spawn the next obstacle column.
-- `vertical_gap_size` (int): The minimum allowable number of empty blocks per column to ensure a passable gap.
+- `gravity_acceleration` (float): Downward acceleration scalar applied to player Y-velocity per physics step.
+- `recoil_impulse_base` (float): The default absolute Y-vector force applied upon projectile firing.
+- `recoil_decay_factor` (float): Logarithmic decay multiplier (range 0.0 to 1.0) applied against `recoil_impulse_base` relative to the frequency of consecutive shots.
+- `fire_cooldown_min` (float): Absolute minimum time boundary required between projectile instantiations.
+- `projectile_velocity_x` (float): Linear speed of the player's bullet.
+- `projectile_damage_base` (float): Base arithmetic deduction applied to hit entity HP.
+- `global_scroll_speed` (float): Environmental and obstacle translation velocity along the negative X-axis.
+- `block_hp_base` (float): Baseline structural integrity points for standard environmental blocks.
+- `score_current` (int): Run-specific metric calculating total passed pillar geometries.
+- `coin_balance` (int): Persistent metacurrency counter.
+- `combo_current` (int): Run-specific consecutive block destruction sequence counter.
+- `combo_max_threshold` (int): Target integer necessary to flip `is_fever_active`.
+- `is_fever_active` (bool): Boolean lock preventing normal collision rules and input mappings.
+- `fever_duration_sec` (float): Absolute timer constant defining Fever state length.
+- `game_phase_current` (int): Incremental integer defining difficulty scaling tier.
+- `pillars_passed_lifetime` (int): Raw counter of completely traversed vertical block structures.
 
 ### 8. [GAME_RULES]
-- **Win/Loss Conditions:** The player transitions to `GameOver` if `player.y` < bottom bounds, or `player.y` > top bounds, or if the player's collider intersects with a block's collider.
-- **Scoring & Progression:** The player earns points (+1) for every column of blocks successfully crossed. Passing a column increments `score_current`. Destroying a block grants +1 coin (chance-based).
-- **Entity Behaviors:**
-  - **Basic Block:** Dies when HP <= 0.
-  - **Armor Block:** Modifies incoming damage (`projectile_damage` * 0.5).
-  - **Moving Block:** Y-position oscillates using a sine wave function based on time and `scroll_speed`.
-  - **Shield Block:** Has an independent `is_shielded` boolean. First hit sets `is_shielded = false` (no HP reduction). Subsequent hits reduce HP.
-  - **Explosive Block:** On HP <= 0, triggers a blast radius that reduces HP of adjoining blocks by 2.
-  - **Metal Block:** `is_invincible = true`. Cannot be destroyed; bullets bounce or despawn.
-  - **Ghost Block:** Toggles `collider.enabled` and opacity based on a timer interval.
-- **Recoil Mitigation (Anti-Ceiling Crash):** To prevent rapid-fire or multishot powerups from generating infinite upward thrust and crashing the player into the ceiling, `recoil_impulse` must explicitly contain an internal cooldown (e.g., max 1 impulse per 0.2s) regardless of fire rate, OR decouple jump from auto-fire.
-- **Alternative Swipe Move:** In the event the player is trapped above a Metal Block, vertical Swipe Down triggers a `fast_fall` maneuver to drop quickly without firing.
+- **Collision & Termination:** During execution, if `is_fever_active` == false, evaluating `player.y` against `viewport.top` or `viewport.bottom` strict boundaries OR evaluating a bounding box intersection against any Block geometry instantly shifts state to `GameOver`. If `is_fever_active` == true, bypass all bounding box evaluations.
+- **Score Matrix:** Traversing the geometric X-axis bounds of a spawned pillar increments `score_current` and `pillars_passed_lifetime` by 1. Nullifying a block's HP grants +1 `combo_current` and tests a probability curve to spawn a Coin entity.
+- **Diminishing Recoil Formula:** Consecutive inputs evaluated within `t < 0.2s` delta applies `recoil_decay_factor`. Upward vector calculation shifts asymptotically towards counterbalancing `gravity_acceleration` but explicitly limits maximum upward trajectory velocity, achieving visual hovering.
+- **Block Taxonomy Behaviors:**
+  - **Basic:** `HP = block_hp_base`. Destroy on `HP <= 0`.
+  - **Armor:** Evaluates incoming damage as `projectile_damage_base * 0.5`.
+  - **Moving:** Evaluates Y-position transform over time utilizing `Mathf.Sin(Time.time * frequency)`.
+  - **Shield:** Enforces hit immunity constraint `hits == 1`. Initial collision sets immunity false (0 damage yield). Subsequent hits execute standard calculation.
+  - **Explosive:** On destruction trigger, fires overlap sphere returning an array of adjacent blocks and applies 2.0 flat damage to all array indexes.
+  - **Metal:** `is_destructible = false`. Collision normal determines angular deflection mapping, bouncing projectiles via inverted X/Y trajectory vectors.
+  - **Ghost:** Evaluates a boolean toggler tied to a 1.5s modulo timer, alternating `collider.enabled` and alpha render states.
+- **Fever Phase Resolution:** When `combo_current` >= `combo_max_threshold`, `is_fever_active` sets strictly true. Player transform Y linearly interpolates to viewport Y-center and locks. Auto-spawns continuous piercing beam. All spawned coin entities undergo transform translation toward player transform. Reverting after `fever_duration_sec` zeros the `combo_current`.
+- **Phase Escalation:** If `pillars_passed_lifetime` % 50 == 0: Increment `game_phase_current`. Execute `global_scroll_speed = global_scroll_speed * 1.10`. Spawn "Warning Wall" entity (10-block height segment heavily weighted to yield 9 Metal blocks and 1 isolated Basic block). No separate Boss GameState is registered.
 
 ### 9. [EVENT_MATRIX]
 | In-Game Event | Gameplay Result | Art/VFX Map (Asset_ID) | Sound Map (Asset_ID) |
 | --- | --- | --- | --- |
-| Player Taps Screen | Spawn Projectile, apply `recoil_impulse` upwards | `SPR_Trippybara_Shoot`, `SPR_Bullet`, `VFX_MuzzleFlash` | `SFX_Shoot_01` |
-| Projectile Hits Block | Reduce Block HP by Damage, destroy projectile | `VFX_HitSpark` | `SFX_Hit_Block` |
-| Block HP <= 0 | Destroy Block entity | `VFX_BlockDestroy` | `SFX_BlockBreak` |
-| Player Hits Block | Trigger `GameOver` state, stop scrolling | `SPR_Trippybara_Death`, `VFX_PlayerDeath` | `SFX_PlayerDeath` |
-| Pass Pillar | Increment `score_current` | `UI_ScorePop` | `SFX_ScoreUp` |
-| Break Explosive Block | Damage adjacent blocks by 2 | `VFX_Explosion_Area` | `SFX_Explosion_Large` |
-| Hit Shield Block (Shield UP) | Remove shield, 0 HP damage | `VFX_ShieldBreak` | `SFX_ShieldShatter` |
-| Player Collects Coin | Increment `coin_balance` | `VFX_CoinCollect` | `SFX_CoinPick` |
-| Player Swipes Down | Trigger rapid descent (fast_fall) without firing | - | - |
+| Valid Screen Tap | Spawns bullet, computes recoil Y-force | `SPR_Trippybara_Shoot`, `VFX_MuzzleFlash`| `SFX_Shoot_01` |
+| Bullet intersects Block | Deduct block HP structure | `VFX_HitSpark` | `SFX_Hit_Block` |
+| Bullet intersects Metal | Inverts bullet trajectory | `VFX_HitSpark` | `SFX_ShieldShatter` |
+| Block HP <= 0 | Despawn block, +1 Combo | `VFX_BlockDestroy` | `SFX_BlockBreak` |
+| Player bounds intersection | Terminate run -> `GameOver` | `SPR_Trippybara_Death`, `VFX_PlayerDeath` | `SFX_PlayerDeath` |
+| Pillar transit finalized | +1 `score_current` | `UI_ScorePop` | `SFX_ScoreUp` |
+| Coin entity intersect | +1 `coin_balance` | `VFX_CoinCollect` | `SFX_CoinPick` |
+| `combo_current` full | Trigger `is_fever_active` execution | `VFX_FeverAura` | `SFX_FeverStart` |
+| `pillars_passed` mod 50 | Trigger phase escalation routine | `VFX_PhaseTransition` | `SFX_PhaseUp` |
 
 ### 10. [UI_ARCHITECTURE]
-- **Home Screen (`UI_Panel_Home`):** Center Anchor.
-  - `UI_Btn_Play`: Central play icon. Action: Transition to `UI_Panel_HUD` and trigger `Play` state.
-  - `UI_Txt_Coins`: Top Right anchor. Action: Displays `coin_balance`.
-- **HUD Screen (`UI_Panel_HUD`):** Top Anchor.
-  - `UI_Txt_Score`: Top Center anchor. Action: Displays `score_current`.
-  - `UI_Btn_Pause`: Top Right anchor. Action: Triggers `Pause` state and opens `UI_Panel_Pause`.
-- **Pause Screen (`UI_Panel_Pause`):** Center Anchor.
-  - `UI_Btn_Resume`: Center anchor. Action: Re-triggers `Play` state.
-  - `UI_Btn_Quit`: Bottom anchor. Action: Triggers `Home` state.
-- **GameOver Screen (`UI_Panel_GameOver`):** Center Anchor.
-  - `UI_Txt_FinalScore`: Center anchor. Action: Displays final run score.
-  - `UI_Btn_Replay`: Bottom anchor. Action: Reloads `Play` state directly.
+- **Home Screen (`UI_Panel_Home`):** Center Viewport Anchor.
+  - `UI_Btn_Play`: Bottom center geometry. Action: Prompts `Play` state entry.
+  - `UI_Txt_Coins`: Top right topology. Action: Dynamically renders string associated with persistent `coin_balance`.
+- **HUD Screen (`UI_Panel_HUD`):** Top Viewport Anchor.
+  - `UI_Txt_Score`: Top Center. Action: Renders `score_current`.
+  - `UI_Txt_Combo`: Top Left. Action: Visualizes `combo_current` progress against `combo_max_threshold`.
+  - `UI_Btn_Pause`: Top Right. Action: Escalate `Pause` state flag.
+  - `UI_Panel_PhaseUp`: Center dynamic popup. Action: Animated prompt overlay for `Phase Escalation`.
+- **Pause Screen (`UI_Panel_Pause`):** Center Viewport Overlay.
+  - `UI_Btn_Resume`: Center point. Action: Clears `Pause` state flag.
+  - `UI_Btn_Quit`: Below Resume. Action: Terminate process tracking and enter `Home` state.
+- **GameOver Screen (`UI_Panel_GameOver`):** Center Viewport Overlay.
+  - `UI_Txt_FinalScore`: Mid-center. Action: Pulls final `score_current` scalar output.
+  - `UI_Btn_Replay`: Bottom left alignment. Action: Rapid reload of `Play` context.
+  - `UI_Btn_Home_Return`: Bottom right alignment. Action: Transition to `Home` mapping.
 
 ### 11. [ASSET_AGGREGATION_CHECKLIST]
 ```json
 {
   "STATIC_ART": [
-    { "id": "SPR_Trippybara_Idle", "description": "Main character idle sprite", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Trippybara_Shoot", "description": "Main character shooting action sprite", "dimensions": "256x256", "format": "png", "animation_frames": 2 },
-    { "id": "SPR_Trippybara_Death", "description": "Main character death sprite", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Bullet", "description": "Standard projectile shot by player", "dimensions": "64x64", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Block_Basic", "description": "Standard basic block pillar segment", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Block_Armor", "description": "Armored block taking less damage", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Block_Moving", "description": "Block that moves vertically", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Block_Shield", "description": "Block protected by a shield", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Block_Explosive", "description": "Block that explodes on destruction", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Block_Metal", "description": "Indestructible metal block", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Block_Ghost", "description": "Block that toggles phase", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Coin", "description": "Currency item", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_BG_Layer1", "description": "Parallax scrolling background", "dimensions": "1080x1920", "format": "jpg", "animation_frames": 1 },
-    { "id": "SPR_Powerup_RapidFire", "description": "Rapid fire powerup drop item", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Powerup_Multishot", "description": "Multishot powerup drop item", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Booster_Shield", "description": "Bubble shield booster icon", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Booster_Freeze", "description": "Freeze timer booster icon", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
-    { "id": "SPR_Booster_Magnet", "description": "Coin magnet booster icon", "dimensions": "128x128", "format": "png", "animation_frames": 1 }
+    { "id": "SPR_Trippybara_Idle", "description": "Player core idle geometry", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Trippybara_Shoot", "description": "Player weapon discharge sprite", "dimensions": "256x256", "format": "png", "animation_frames": 2 },
+    { "id": "SPR_Trippybara_Death", "description": "Player fatal collision sprite", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Bullet", "description": "Projectile visual element", "dimensions": "64x64", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Block_Basic", "description": "Base environmental block constraint", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Block_Armor", "description": "Resistance-heavy block visual", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Block_Moving", "description": "Dynamic translation block visual", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Block_Shield", "description": "Dual-hit barrier block geometry", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Block_Explosive", "description": "Volatile explosive entity visual", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Block_Metal", "description": "Invincible static object geometry", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Block_Ghost", "description": "Phasing entity logic visual", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_Coin", "description": "Pickup currency item sprite", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
+    { "id": "SPR_BG_Layer1", "description": "Tiled parallax background layer", "dimensions": "1080x1920", "format": "jpg", "animation_frames": 1 },
+    { "id": "SPR_Powerup_Generic", "description": "Default container for arbitrary buffs", "dimensions": "128x128", "format": "png", "animation_frames": 1 }
   ],
   "VFX_ASSETS": [
-    { "id": "VFX_MuzzleFlash", "description": "Flash effect at gun barrel when firing", "duration_sec": 0.2, "particle_density": "Low" },
-    { "id": "VFX_HitSpark", "description": "Sparks flying when projectile connects with block", "duration_sec": 0.3, "particle_density": "Medium" },
-    { "id": "VFX_BlockDestroy", "description": "Block shattering into pieces", "duration_sec": 0.5, "particle_density": "High" },
-    { "id": "VFX_PlayerDeath", "description": "Player character crashing explosion", "duration_sec": 1.0, "particle_density": "High" },
-    { "id": "VFX_Explosion_Area", "description": "Large area effect blast from explosive block", "duration_sec": 0.6, "particle_density": "High" },
-    { "id": "VFX_ShieldBreak", "description": "Energy scattering when shield block loses shield", "duration_sec": 0.4, "particle_density": "Medium" },
-    { "id": "VFX_CoinCollect", "description": "Sparkle effect when coin is gathered", "duration_sec": 0.3, "particle_density": "Low" }
+    { "id": "VFX_MuzzleFlash", "description": "Discharge origin particle emission", "duration_sec": 0.2, "particle_density": "Low" },
+    { "id": "VFX_HitSpark", "description": "Projectile kinetic termination sequence", "duration_sec": 0.3, "particle_density": "Medium" },
+    { "id": "VFX_BlockDestroy", "description": "Destruction logic visual payload", "duration_sec": 0.5, "particle_density": "High" },
+    { "id": "VFX_PlayerDeath", "description": "Fatal constraint trigger payload", "duration_sec": 1.0, "particle_density": "High" },
+    { "id": "VFX_Explosion_Area", "description": "Radius-based AOE kinetic payload", "duration_sec": 0.6, "particle_density": "High" },
+    { "id": "VFX_ShieldBreak", "description": "Immunity negation state visual", "duration_sec": 0.4, "particle_density": "Medium" },
+    { "id": "VFX_CoinCollect", "description": "Currency increment particle", "duration_sec": 0.3, "particle_density": "Low" },
+    { "id": "VFX_FeverAura", "description": "Invincible logic persistent visual", "duration_sec": 5.0, "particle_density": "Medium" },
+    { "id": "VFX_PhaseTransition", "description": "Environmental manipulation payload", "duration_sec": 1.0, "particle_density": "High" }
   ],
   "SOUND_ASSETS": [
-    { "id": "SFX_Shoot_01", "description": "Weapon fire sound", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "SFX_Hit_Block", "description": "Impact sound on block", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "SFX_BlockBreak", "description": "Block breaking completely", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "SFX_PlayerDeath", "description": "Impact/Death sound for player", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "SFX_ScoreUp", "description": "Positive chime for passing a pillar", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "SFX_Explosion_Large", "description": "Deep boom for explosive block", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "SFX_ShieldShatter", "description": "Glass/energy shattering sound", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "SFX_CoinPick", "description": "Coin pickup chime", "layer": "SFX", "loop_flag": false, "format": "wav" },
-    { "id": "BGM_MainLoop", "description": "High tempo energetic gameplay music", "layer": "BGM", "loop_flag": true, "format": "mp3" }
+    { "id": "SFX_Shoot_01", "description": "Recoil generation audio queue", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_Hit_Block", "description": "Kinetic termination collision audio", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_BlockBreak", "description": "Destruction threshold hit queue", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_PlayerDeath", "description": "Fatal bounds termination queue", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_ScoreUp", "description": "Pillar evaluation success logic audio", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_Explosion_Large", "description": "AOE evaluation logic audio queue", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_ShieldShatter", "description": "Immunity invalidation or metallic bounce queue", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_CoinPick", "description": "Currency modifier increment hit", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "BGM_MainLoop", "description": "Persistent active state audio base", "layer": "BGM", "loop_flag": true, "format": "mp3" },
+    { "id": "SFX_FeverStart", "description": "Fever state initialization queue", "layer": "SFX", "loop_flag": false, "format": "wav" },
+    { "id": "SFX_PhaseUp", "description": "Phase index increment queue", "layer": "SFX", "loop_flag": false, "format": "wav" }
   ],
   "UI_ASSETS": [
-    { "id": "UI_Btn_Play", "description": "Play button", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Btn_Pause", "description": "Pause icon", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Btn_Resume", "description": "Resume icon button", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Btn_Quit", "description": "Quit/Home icon button", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Btn_Replay", "description": "Restart/Replay icon button", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Txt_Coins", "description": "Coin icon next to counter", "dimensions": "64x64", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Txt_Score", "description": "Score display background", "dimensions": "512x128", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Panel_Home", "description": "Main menu background panel", "dimensions": "1080x1920", "format": "png", "animation_frames": 1 },
-    { "id": "UI_Panel_GameOver", "description": "GameOver popup background", "dimensions": "800x800", "format": "png", "animation_frames": 1 },
-    { "id": "UI_ScorePop", "description": "Floating text effect for score or damage numbers", "dimensions": "128x64", "format": "png", "animation_frames": 1 }
+    { "id": "UI_Btn_Play", "description": "State transition element (Init)", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Btn_Pause", "description": "State transition element (Halt)", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Btn_Resume", "description": "State transition element (Resume)", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Btn_Quit", "description": "State transition element (Home routing)", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Btn_Replay", "description": "State transition element (Restart loop)", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Btn_Home_Return", "description": "State transition element (Post-game Home)", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Txt_Coins", "description": "Currency render geometry", "dimensions": "64x64", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Txt_Score", "description": "Metric calculation geometry layer", "dimensions": "512x128", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Panel_Home", "description": "Menu background topology", "dimensions": "1080x1920", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Panel_GameOver", "description": "Termination metric logic overlay", "dimensions": "800x800", "format": "png", "animation_frames": 1 },
+    { "id": "UI_ScorePop", "description": "Dynamic evaluation metric text render", "dimensions": "128x64", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Txt_Combo", "description": "Consecutive evaluation metric render", "dimensions": "128x64", "format": "png", "animation_frames": 1 },
+    { "id": "UI_Panel_PhaseUp", "description": "Phase escalation logic dynamic popup", "dimensions": "512x256", "format": "png", "animation_frames": 1 }
   ]
 }
 ```

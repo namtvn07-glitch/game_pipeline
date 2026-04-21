@@ -1,126 +1,98 @@
 [
   {
     "id": "SPR_Trippybara_Idle",
-    "description": "Main character idle sprite",
+    "description": "Player core idle geometry",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Trippybara_Shoot",
-    "description": "Main character shooting action sprite",
+    "description": "Player weapon discharge sprite",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 2
   },
   {
     "id": "SPR_Trippybara_Death",
-    "description": "Main character death sprite",
+    "description": "Player fatal collision sprite",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Bullet",
-    "description": "Standard projectile shot by player",
+    "description": "Projectile visual element",
     "dimensions": "64x64",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Block_Basic",
-    "description": "Standard basic block pillar segment",
+    "description": "Base environmental block constraint",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Block_Armor",
-    "description": "Armored block taking less damage",
+    "description": "Resistance-heavy block visual",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Block_Moving",
-    "description": "Block that moves vertically",
+    "description": "Dynamic translation block visual",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Block_Shield",
-    "description": "Block protected by a shield",
+    "description": "Dual-hit barrier block geometry",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Block_Explosive",
-    "description": "Block that explodes on destruction",
+    "description": "Volatile explosive entity visual",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Block_Metal",
-    "description": "Indestructible metal block",
+    "description": "Invincible static object geometry",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Block_Ghost",
-    "description": "Block that toggles phase",
+    "description": "Phasing entity logic visual",
     "dimensions": "256x256",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_Coin",
-    "description": "Currency item",
+    "description": "Pickup currency item sprite",
     "dimensions": "128x128",
     "format": "png",
     "animation_frames": 1
   },
   {
     "id": "SPR_BG_Layer1",
-    "description": "Parallax scrolling background",
+    "description": "Tiled parallax background layer",
     "dimensions": "1080x1920",
     "format": "jpg",
     "animation_frames": 1
   },
   {
-    "id": "SPR_Powerup_RapidFire",
-    "description": "Rapid fire powerup drop item",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Powerup_Multishot",
-    "description": "Multishot powerup drop item",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Booster_Shield",
-    "description": "Bubble shield booster icon",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Booster_Freeze",
-    "description": "Freeze timer booster icon",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Booster_Magnet",
-    "description": "Coin magnet booster icon",
+    "id": "SPR_Powerup_Generic",
+    "description": "Default container for arbitrary buffs",
     "dimensions": "128x128",
     "format": "png",
     "animation_frames": 1

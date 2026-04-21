@@ -1,77 +1,77 @@
 [
   {
     "id": "SFX_Shoot_01",
-    "description": "Weapon fire sound",
+    "description": "Recoil generation audio queue",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "SFX_Hit_Block",
-    "description": "Impact sound on block",
+    "description": "Kinetic termination collision audio",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "SFX_BlockBreak",
-    "description": "Block breaking completely",
+    "description": "Destruction threshold hit queue",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "SFX_PlayerDeath",
-    "description": "Impact/Death sound for player",
+    "description": "Fatal bounds termination queue",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "SFX_ScoreUp",
-    "description": "Positive chime for passing a pillar",
+    "description": "Pillar evaluation success logic audio",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "SFX_Explosion_Large",
-    "description": "Deep boom for explosive block",
+    "description": "AOE evaluation logic audio queue",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "SFX_ShieldShatter",
-    "description": "Glass/energy shattering sound",
+    "description": "Immunity invalidation or metallic bounce queue",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "SFX_CoinPick",
-    "description": "Coin pickup chime",
+    "description": "Currency modifier increment hit",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
     "id": "BGM_MainLoop",
-    "description": "High tempo energetic gameplay music",
+    "description": "Persistent active state audio base",
     "layer": "BGM",
     "loop_flag": true,
     "format": "mp3"
   },
   {
-    "id": "SFX_Powerup_Collect",
-    "description": "Powerup collection sound",
+    "id": "SFX_FeverStart",
+    "description": "Fever state initialization queue",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
   },
   {
-    "id": "SFX_Booster_Equip",
-    "description": "Sound when equipping a booster pre-game or in-game",
+    "id": "SFX_PhaseUp",
+    "description": "Phase index increment queue",
     "layer": "SFX",
     "loop_flag": false,
     "format": "wav"
