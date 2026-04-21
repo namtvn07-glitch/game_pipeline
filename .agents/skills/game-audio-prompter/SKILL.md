@@ -47,7 +47,7 @@ The generated file MUST strictly follow the structural template below.
 - **Prompt Formulation:** "[Estimated BPM], [Instruments], [Mood]. [Loop constraints]."
 
 ## 3. Sound Effects (SFX) Breakdown
-*(Repeat for every SFX in the JSON, or prioritize if constrained by Budget Sentinel)*
+*(Repeat for EVERY SFX found in the JSON - DO NOT truncate unless explicitly instructed)*
 ### [SFX Asset ID]
 - **Gameplay Context:** [What action triggers this sound]
 - **Trigger Frequency:** [Low / High / Continuous]
