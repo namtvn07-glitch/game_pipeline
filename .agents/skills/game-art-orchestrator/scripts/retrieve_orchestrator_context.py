@@ -52,10 +52,18 @@ def retrieve_context(style_dir, prompt):
     
     # 3. Retrieve Global Rules
     global_scores = []
-    for heading, block in global_data.items():
-        if "vector" in block and "text" in block:
-            score = cosine_similarity(prompt_vector, block["vector"])
-            global_scores.append((score, block["text"]))
+    if isinstance(global_data, list):
+        for block in global_data:
+            vec_key = "embedding" if "embedding" in block else "vector"
+            if vec_key in block and "text" in block:
+                score = cosine_similarity(prompt_vector, block[vec_key])
+                global_scores.append((score, block["text"]))
+    elif isinstance(global_data, dict):
+        for heading, block in global_data.items():
+            vec_key = "embedding" if "embedding" in block else "vector"
+            if vec_key in block and "text" in block:
+                score = cosine_similarity(prompt_vector, block[vec_key])
+                global_scores.append((score, block["text"]))
             
     global_scores.sort(key=lambda x: x[0], reverse=True)
     top_global_rules = [item[1] for item in global_scores[:3]]  # Extract top 3 rules
