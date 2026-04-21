@@ -26,6 +26,7 @@ You cannot just copy the description over. You MUST translate visual/mechanic ta
 - **Rule of Fatigue:** If a game mechanic triggers at high frequency (e.g., shooting 3 times a second), the SFX prompt MUST state: "Fast attack, instant decay, strictly non-fatiguing to the ear."
 - **Rule of Loops:** Any asset marked `loop_flag: true` MUST forcefully include the prompt constraint: "MUST be a seamless looping track, no fade-in or fade-out."
 - **Rule of Style Matching:** Map instrumentation to the visual era (e.g., Retro/8-bit visuals dictate Synthwave, Chiptune, or basic waveform instruments).
+- **Rule of Duration Constraints:** Explicitly enforce a strict time limit for every asset. Typical SFX MUST be constrained to precise millisecond/second limits (e.g., "< 500ms", "Max 1s"). BGM should also have a defined loop length expectation if applicable.
 
 ### Phase 3: Generate the Prompt Book
 Create a Markdown file named `<ProjectName>_Audio_Prompt_Book.md` in the project's root directory. 
@@ -44,6 +45,7 @@ The generated file MUST strictly follow the structural template below.
 ## 2. Background Music (BGM) Request
 ### [BGM Asset ID]
 - **Gameplay Context:** [Where/When it plays]
+- **Duration Constraint:** [Expected track/loop length, e.g., ~15s to 30s loop]
 - **Prompt Formulation:** "[Estimated BPM], [Instruments], [Mood]. [Loop constraints]."
 
 ## 3. Sound Effects (SFX) Breakdown
@@ -51,6 +53,7 @@ The generated file MUST strictly follow the structural template below.
 ### [SFX Asset ID]
 - **Gameplay Context:** [What action triggers this sound]
 - **Trigger Frequency:** [Low / High / Continuous]
+- **Duration Constraint:** [Strict maximum length, e.g., Max 0.5s or Max 2s]
 - **Audio Texture Prompt:** "[Attack/Decay envelope], [Reverb level], [Timbre/Pitch]. [Fatigue constraints if high-frequency]."
 ```
 
