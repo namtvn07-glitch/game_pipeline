@@ -71,13 +71,20 @@ def retrieve_context(style_dir, prompt):
     # 4. Retrieve Few-Shot Images
     image_scores = []
     fallback_archetypes = []
-    for filepath, block in style_data.items():
+    if isinstance(style_data, dict):
+        style_list = [{"filename": k, **v} for k, v in style_data.items()]
+    else:
+        style_list = style_data
+        
+    for block in style_list:
+        filepath = block.get("filename", "")
         if "is_archetype" in block and block["is_archetype"]:
             abs_img_path = os.path.abspath(os.path.join(base_dir, style_dir, filepath)) if not os.path.isabs(filepath) else filepath
             fallback_archetypes.append(abs_img_path)
             
-        if "vector" in block:
-            score = cosine_similarity(prompt_vector, block["vector"])
+        vec_key = "embedding" if "embedding" in block else "vector"
+        if vec_key in block:
+            score = cosine_similarity(prompt_vector, block[vec_key])
             abs_img_path = os.path.abspath(os.path.join(base_dir, style_dir, filepath)) if not os.path.isabs(filepath) else filepath
             image_scores.append((score, abs_img_path))
 

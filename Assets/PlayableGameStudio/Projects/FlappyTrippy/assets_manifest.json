@@ -1,0 +1,13 @@
+{
+  "images": {
+    "SPR_BG_Layer1": "assets/SPR_BG_Layer1.webp",
+    "SPR_Block_Basic": "assets/SPR_Block_Basic.webp",
+    "SPR_Block_Explosive": "assets/SPR_Block_Explosive.webp",
+    "SPR_Block_Moving": "assets/SPR_Block_Moving.webp",
+    "SPR_Bullet": "assets/SPR_Bullet.webp",
+    "SPR_Trippybara_Death": "assets/SPR_Trippybara_Death.webp",
+    "SPR_Trippybara_Idle": "assets/SPR_Trippybara_Idle.webp",
+    "UI_Btn_Play": "assets/UI_Btn_Play.webp"
+  },
+  "audio": {}
+}

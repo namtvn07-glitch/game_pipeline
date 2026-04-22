@@ -1,0 +1,37 @@
+{
+  "semantic_metadata": {
+    "supported_types": ["asset", "ui"],
+    "vector_keywords": [
+      "cartoon",
+      "3D",
+      "pixar",
+      "furry",
+      "volumetric",
+      "cinematic",
+      "chubby",
+      "cute"
+    ]
+  },
+  "evaluation_criteria": {
+    "visual_dna": [
+      "Does the output utilize high-fidelity 3D rendering with soft volumetric lighting?",
+      "Are proportions exaggerated into chubby, cute, oversized-head formats?",
+      "Does the material feature dense, stylized fur or soft tactile surfaces?"
+    ],
+    "product_logic": [
+      "Is the silhouette cleanly separated using cinematic rim lighting?",
+      "Do the props/accessories integrate softly without breaking the organic 3D aesthetic?"
+    ],
+    "technical_excellence": [
+      "Is the fur/hair rendered with high texel density while maintaining stylized structural clumps?",
+      "Are there soft ambient occlusion shadows grounding the volumes?"
+    ]
+  },
+  "forbidden_elements": [
+    "flat vector colors",
+    "2D cell-shading",
+    "harsh black outlines",
+    "realistic anatomy",
+    "gritty urban grunge"
+  ]
+}

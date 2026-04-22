@@ -1,0 +1,26 @@
+[
+  {
+    "filename": "cartoon.jpg",
+    "semantic_metadata": "Shape Language: rounded, soft, exaggerated proportions. Material: flat organic, minimal shading. Complexity Level: medium. Color Palette: cool tones, cyan, blue, dark blue. RAG Hook Tag: tag: Character_Alien, material: organic_flat, rarity: rare, visibility: crisp"
+  },
+  {
+    "filename": "cartoon_2.jpg",
+    "semantic_metadata": "Shape Language: sharp angular hair, large expressive eyes, simplified anatomy. Material: cell-shaded, high contrast flat colors. Complexity Level: highly detailed. Color Palette: warm reds, yellows, skin tones, black outlines. RAG Hook Tag: tag: Character_Anime, material: cell_shaded, rarity: epic, visibility: high_contrast"
+  },
+  {
+    "filename": "cartoon_3.jpg",
+    "semantic_metadata": "Shape Language: extremely bulbous, perfectly round heads, simple vector outlines. Material: flat vector color, zero shading. Complexity Level: basic. Color Palette: vibrant pink, orange, yellow, brown. RAG Hook Tag: tag: Character_Kid, material: vector_flat, rarity: common, visibility: clear"
+  },
+  {
+    "filename": "cartoon_4.jpg",
+    "semantic_metadata": "Shape Language: chibi proportions, oversized head, thick uniform outlines. Material: soft vector shading, subtle gradients. Complexity Level: medium. Color Palette: muted grey, denim blue, bright red accents. RAG Hook Tag: tag: Character_Chibi, material: soft_vector, rarity: common, visibility: clean"
+  },
+  {
+    "filename": "cartoon_5.jpg",
+    "semantic_metadata": "Shape Language: exaggerated squash-and-stretch cartoon anatomy, rounded volumetric forms. Material: smooth 3D-like rendering, soft shadows. Complexity Level: high. Color Palette: desaturated greys, warm browns, white accents. RAG Hook Tag: tag: Character_Toon, material: volumetric_smooth, rarity: legendary, visibility: 3D_like"
+  },
+  {
+    "filename": "cartoon_6.jpg",
+    "semantic_metadata": "Shape Language: exaggerated cute proportions, large head, big shiny eyes, rounded chubby physique. Material: high-fidelity 3D render, dense stylized fur, soft cinematic volumetric lighting. Complexity Level: extremely high detail, Pixar-esque. Color Palette: warm earthen tones, natural browns, soft orange, delicate rim lighting. RAG Hook Tag: tag: Character_3D_Furry, material: cinematic_3D, rarity: mythical, visibility: pristine"
+  }
+]

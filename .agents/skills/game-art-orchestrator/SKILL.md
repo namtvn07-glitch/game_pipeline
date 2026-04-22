@@ -24,7 +24,7 @@ Whenever the user asks you to "draw", "generate", or "create" an asset, BEFORE g
 Instead of generating multiple variants simultaneously, the orchestration follows a structured 2-step approval process:
 
 1. **Step 1: Sketching & Silhouettes**
-   Present the generated sketch/silhouette to the user for confirmation. **CRITICAL: You MUST embed the generated image directly in your chat response using absolute markdown syntax: `![Image Name](absolute_path_to_artifact.png)` so the user can see it.**
+   Present the generated sketch/silhouette to the user for confirmation. **CRITICAL: You MUST embed the generated image directly in your chat response using absolute markdown syntax: `![Image Name](absolute/path/to/artifact.png)` so the user can see it. On Windows, you MUST replace all backslashes (`\`) with forward slashes (`/`) or use `file:///` format so markdown parses correctly.**
    **HUMAN-IN-THE-LOOP CHECKPOINT**: Stop your execution and ask the user:
    - "Do you approve this sketch/silhouette?"
    - "Are there any structural adjustments needed before we proceed to coloring?"
@@ -35,7 +35,7 @@ Instead of generating multiple variants simultaneously, the orchestration follow
 
 3. (Optional) Run `python scripts/downscale_image.py <image_paths>` if the final image is large and you anticipate Token Overflow when reading it.
 4. Adopt the persona in `prompts/evaluator-vlm.md`. Evaluate the final rendered image against the user's initial prompt, the retrieved Global Rules, and the `Evaluation_Rules.json`. Provide a **Binary Validation Checklist** followed by an Aesthetic Score (0-100) and `Correction_Guidance`.
-5. **FINAL CHECKPOINT**: Present the final image and Evaluator scoring to the user. **CRITICAL: You MUST embed the final image directly in your chat response using absolute markdown syntax: `![Image Name](absolute_path_to_artifact.png)`.** Ask them:
+5. **FINAL CHECKPOINT**: Present the final image and Evaluator scoring to the user. **CRITICAL: You MUST embed the final image directly in your chat response using absolute markdown syntax: `![Image Name](absolute/path/to/artifact.png)`. Remember to use forward slashes (`/`) for paths.** Ask them:
    - "Do you approve this final render?" (If yes, trigger Phase 3: Asset Finalization & Export).
    - "Should we proceed to Round 2 (Prompt Translation and repolishing) using the correction guidance?"
    - "Would you like to manually override/add any text to the correction guidance before Round 2 runs?"
@@ -43,10 +43,11 @@ Instead of generating multiple variants simultaneously, the orchestration follow
 
 ### Phase 3: Asset Finalization & Export
 When the user explicitly approves a generated variant:
-1. Identify the semantic category of the asset (e.g., `Characters`, `Environments`, `Items`, `UI`, `Obstacles`).
-2. Construct the absolute export directory path using this professional structure:
-   `<workspace>/Assets/GameArtist/Generated/<Style_Name>/<Category>/`
-3. Execute a copy/move command to transfer the approved image artifact from the `.gemini/artifacts/` folder into the target directory.
-4. Rename the file to a clean, standardized format: `[object_name]_[YYYY-MM-DD].png` (e.g., `laser_pistol_2026-04-20.png`).
-5. Read `Assets/GameArtist/Generated_Asset_Catalog.md`. Use your code editing tool to append a new row to the table in this file, logging the Category, Asset Name, Target Style, Absolute File Path, and a short 1-sentence prompt description.
-6. Confirm completion by providing the user with the final absolute path to their new production-ready asset.
+1. Identify the target **Project Name** from the user's initial prompt or context (e.g., `FlappyTrippy`). If unknown, verify with the user before exporting.
+2. Identify the semantic category of the asset (e.g., `Characters`, `Environments`, `Items`, `UI`, `Obstacles`).
+3. Construct the absolute export directory path using this professional structure:
+   `<workspace>/<Project_Name>/GameAssets/<Style_Name>/<Category>/`
+4. Execute a **copy** command (do NOT use move/delete) to transfer the approved image artifact from the `.gemini/artifacts/` folder into the target directory, ensuring the original remains in artifacts for rendering.
+5. Rename the file to a clean, standardized format: `[object_name]_[YYYY-MM-DD].png` (e.g., `laser_pistol_2026-04-20.png`).
+6. Read `<workspace>/<Project_Name>/GameAssets/Generated_Asset_Catalog.md`. Use your code editing tool to append a new row to the table in this file, logging the Category, Asset Name, Target Style, Absolute File Path, and a short 1-sentence prompt description. If the catalog file doesn't exist yet, create it with a standard markdown table header.
+7. Confirm completion by providing the user with the final absolute path to their new production-ready asset. **CRITICAL: You MUST embed the final exported image directly in your chat response using absolute markdown syntax: `![Image Name](absolute/path/to/exported_asset.png)`. Make sure to replace all backslashes (`\`) with forward slashes (`/`).**

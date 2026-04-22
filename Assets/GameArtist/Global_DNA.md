@@ -18,3 +18,8 @@ Strictly 2D side-profile (orthographic projection). Absolutely no 3D depth, isom
 
 # VI. UI RULES
 - **Overlays**: UI elements and popups must be designed as clean, lightweight overlays (semi-transparent backgrounds) to support zero-friction gameplay navigation without full screen reloads.
+
+# VII. ART STYLE & AESTHETIC RULES
+- **Linework**: Thick, bold black outlines defining all major shapes and characters to ensure high contrast and readability on small screens.
+- **Coloring**: Bright, vibrant flat colors. Shading should be minimal (simple cel-shading) with almost no gradients or realistic textures.
+- **Shapes & Proportions**: Cute, rounded, and expressive designs with highly stylized, exaggerated proportions (e.g., large eyes, soft edges) characteristic of casual 2D mobile games.
