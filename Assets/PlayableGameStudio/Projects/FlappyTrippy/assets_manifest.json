@@ -1,0 +1,15 @@
+{
+  "images": {
+    "SPR_Player_Idle": "assets/SPR_Player_Idle.webp",
+    "FX_G02_Bullet_001": "assets/FX_G02_Bullet_001.webp",
+    "SPR_Block_Basic": "assets/SPR_Block_Basic.webp",
+    "SPR_Block_Metal": "assets/SPR_Block_Metal.webp",
+    "SPR_Block_Explosive": "assets/SPR_Block_Explosive.webp",
+    "SPR_Block_Moving": "assets/SPR_Block_Moving.webp",
+    "SPR_Powerup_Generic": "assets/SPR_Powerup_Generic.webp",
+    "UI_Btn_CTA": "assets/UI_Btn_CTA.webp",
+    "UI_Title_Logo": "assets/UI_Title_Logo.webp",
+    "SPR_BG_Layer1": "assets/SPR_BG_Layer1.webp"
+  },
+  "audio": {}
+}

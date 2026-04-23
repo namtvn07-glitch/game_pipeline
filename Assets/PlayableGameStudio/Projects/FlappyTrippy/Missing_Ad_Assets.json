@@ -1,0 +1,34 @@
+[
+  {
+    "id": "UI_Icon_Tap",
+    "description": "A cartoonish hand icon with extended index finger pointing/tapping, white gloves",
+    "dimensions": "150x150",
+    "format": "png",
+    "animation_frames": 1,
+    "style_hint": "Flat UI or slightly glossy cartoon vector style, highly visible, white fill with dark outline."
+  },
+  {
+    "id": "UI_Btn_CTA",
+    "description": "A bright, pulsing 'PLAY NOW' generic button",
+    "dimensions": "300x120",
+    "format": "png",
+    "animation_frames": 1,
+    "style_hint": "Vibrant color (e.g., yellow or neon green) to attract clicks, rounded corners, large bold text."
+  },
+  {
+    "id": "UI_Panel_Backdrop",
+    "description": "A semi-transparent dark overlay",
+    "dimensions": "10x10",
+    "format": "png",
+    "animation_frames": 1,
+    "style_hint": "Plain black color at 70% opacity. Can be extremely small since it will be stretched."
+  },
+  {
+    "id": "UI_Title_Logo",
+    "description": "Flappy Trippy game title logo",
+    "dimensions": "600x300",
+    "format": "png",
+    "animation_frames": 1,
+    "style_hint": "Funky, trippy bubble letters or thick arcade styling, bright contrasting colors."
+  }
+]
