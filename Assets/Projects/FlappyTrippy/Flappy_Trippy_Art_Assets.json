@@ -1,100 +1,17 @@
 [
-  {
-    "id": "SPR_Trippybara_Idle",
-    "description": "Player core idle geometry",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Trippybara_Shoot",
-    "description": "Player weapon discharge sprite",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 2
-  },
-  {
-    "id": "SPR_Trippybara_Death",
-    "description": "Player fatal collision sprite",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Bullet",
-    "description": "Projectile visual element",
-    "dimensions": "64x64",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Block_Basic",
-    "description": "Base environmental block constraint",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Block_Armor",
-    "description": "Resistance-heavy block visual",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Block_Moving",
-    "description": "Dynamic translation block visual",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Block_Shield",
-    "description": "Dual-hit barrier block geometry",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Block_Explosive",
-    "description": "Volatile explosive entity visual",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Block_Metal",
-    "description": "Invincible static object geometry",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Block_Ghost",
-    "description": "Phasing entity logic visual",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Coin",
-    "description": "Pickup currency item sprite",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_BG_Layer1",
-    "description": "Tiled parallax background layer",
-    "dimensions": "1080x1920",
-    "format": "jpg",
-    "animation_frames": 1
-  },
-  {
-    "id": "SPR_Powerup_Generic",
-    "description": "Default container for arbitrary buffs",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  }
+  { "id": "SPR_Player_Idle", "description": "Main character idle sprite", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Player_Shoot", "description": "Main character shooting/recoil frame", "dimensions": "256x256", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Player_Shield", "description": "Bubble shield around player", "dimensions": "300x300", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Proj_Base", "description": "Standard projectile", "dimensions": "64x64", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Proj_Special", "description": "Special powerup projectile (glow/color swapped)", "dimensions": "80x80", "format": "png", "animation_frames": 3 },
+  { "id": "SPR_Laser_Beam", "description": "Fever mode screen laser", "dimensions": "800x128", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Block_Basic", "description": "Standard breakable obstacle", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Block_Armor", "description": "Armored obstacle block", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Block_Metal", "description": "Indestructible obstacle block", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Block_Explosive", "description": "Exploding obstacle block", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Block_Ghost", "description": "Phasing obstacle block", "dimensions": "128x128", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Block_Shield", "description": "Protective energy shield wrapping a block", "dimensions": "150x150", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Warning_Wall", "description": "Dangerous wall obstacle for phase transition", "dimensions": "128x512", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_Powerup_Box", "description": "Generic powerup drop box", "dimensions": "100x100", "format": "png", "animation_frames": 1 },
+  { "id": "SPR_BG_Layer1", "description": "Scrolling background layer", "dimensions": "1080x1920", "format": "jpg", "animation_frames": 1 }
 ]

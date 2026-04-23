@@ -24,6 +24,8 @@ Explicitly list the exact mathematical and logic variables that developers will 
 
 ### 8. [GAME_RULES]
 Explicitly list all behaviors, limitations, mathematical rules, and entity conditions. Relate them strictly back to the variables defined in `[SYSTEM_VARIABLES]`. Do NOT write pseudo-code.
+**CRITICAL:** Define explicit "Visceral Feedbacks" for every action and entity here to ensure Game Feel (Juice) is traceable in later phases.
 - **Win/Loss Conditions:** How does the player transition to `GameOver`?
 - **Scoring & Progression:** What actions grant points?
-- **Entity Behaviors:** How do enemies or objects react logically to player actions?
+- **Entity Behaviors (Action-Reaction Schema):** Describe logic, then explicitly mandate the required feedbacks.
+  - *Example:* "Shield Block: Absorbs first hit. **Required Feedback:** Needs visual shield overlay (Art), shatter particle (VFX), and break sound (SFX)."

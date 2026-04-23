@@ -24,11 +24,17 @@ Explosive Block: Khi bị phá hủy sẽ gây sát thương lan (2 damage) cho 
 Metal Block: Khối thép không thể phá hủy, người chơi bắt buộc phải né tránh.
 Ghost Block: Khối mập mờ, có thể đi xuyên qua khi ẩn và trở thành vật cản khi hiện hình.
 4. Hệ thống hỗ trợ (Boosters & Powerups)
-Để tinh giản tài nguyên thiết kế, hệ thống sức mạnh được gộp chung thành một vật phẩm duy nhất xuất hiện trên đường càn quét:
-- Hộp Cứu Trợ (Generic Powerup): Rớt ra ngẫu nhiên khi đập vỡ block. Mỗi khi ăn sẽ mang lại một bùa lợi tạm thời (ví dụ: Tạo bong bóng khiên chặn 1 hit, hoặc xả đạn cực đại trong 5 giây).
-(Loại bỏ khái niệm mua Booster từ màn hình chờ để giữ game tập trung vào kỹ năng chiến đấu).
+Hệ thống sức mạnh nhặt trên đường (Powerups):
+- Hộp Cứu Trợ (Generic Powerup): Rớt ra ngẫu nhiên khi đập vỡ block. Khi ăn sẽ nhận được 1 trong 3 loại đạn đặc biệt:
+  + Rapid Fire: Tốc độ bắn cực nhanh.
+  + Multishot: Đạn tỏa ra nhiều hướng.
+  + Đạn Xuyên: Bắn xuyên phá nhiều block cùng lúc.
+
+Hệ thống Booster chủ động (HUD Button):
+- Trong quá trình chơi (in-game HUD), có 1 nút bấm (Button) chuyên dụng để người chơi tự kích hoạt Booster.
+- Trang bị: Khiên (Tạo vòng bảo vệ chặn 1 lần va chạm với vật cản).
 8. Giao diện người dùng (UI/Popup)
 Áp dụng triết lý "Zero-Friction" (giảm thiểu ma sát điều hướng):
-- Màn hình Home: Màn hình trọng tâm duy nhất sau khi vào game, hiển thị nút Play để nhảy thẳng vào cuộc chiến. Bao gộp luôn phần xem tống số lượng Xu (Coins).
-- Gameplay & HUD: Hiển thị nhanh điểm số hiện tại và thanh Combo gạch đập được.
-- Popup Màn Chơi: Pause, GameOver, và thông báo PhaseUp Milestone đều chỉ là các mảnh đè (Overlay) lên không gian chơi lõi, giúp người chơi quay vòng Replay nhanh chóng không độ trễ.
+- Bỏ qua Màn Hình Home: Game không cần màn hình Home. Người chơi sẽ vào thẳng màn hình Gameplay ngay khi khởi động.
+- Gameplay & HUD: Chứa các thông tin lõi bao gồm điểm số hiện tại, thanh Combo gạch đập được và nút bấm sử dụng Booster (Khiên).
+- Popup Màn Chơi: Các popup như Pause, GameOver, và thông báo PhaseUp Milestone đều chỉ là các mảnh đè (Overlay) lên không gian chơi lõi. Giúp người chơi quay vòng Replay (chơi lại) cực nhanh mà không gặp độ trễ tải màn hình.

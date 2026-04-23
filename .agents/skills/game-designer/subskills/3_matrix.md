@@ -13,11 +13,18 @@ A Markdown table explicitly listing every input/state transition and what gamepl
 | Player Taps Screen | Trigger `Jump_Impulse` | `SPR_Player_Jump`, `VFX_JumpDust` | `SFX_Jump_01` |
 
 ### 10. [UI_ARCHITECTURE]
-A detailed Markdown section describing every UI Screen Flow. You MUST explicitly state the Anchor and the Transition Flow.
+A detailed Markdown section describing the UI Screen Flow using a strict hierarchical architecture. Break it down explicitly by Screens, Popups, and Overlays. For each view, detail its Layer, Background, and Contained Elements with Anchors and Actions.
 Example:
-- **Home Screen (`UI_Panel_Home`):** Center Anchor.
-  - `UI_Btn_Play`: Central play icon. Action: Transition to `UI_Panel_HUD` and trigger `Play` state.
-  - `UI_Btn_Settings`: Top Right anchor. Action: Open `UI_Panel_Settings` popup.
+#### A. Screen: Home (`UI_Screen_Home`)
+- **Layer:** Base UI Layer.
+- **Contained Elements:**
+  - `UI_Btn_Play`: Central play icon. Action -> Transitions to `UI_Screen_Gameplay` and triggers `Play` state.
+  - `UI_Btn_Settings`: Top Right anchor. Action -> Opens `UI_Popup_Settings`.
+#### B. Popup: Settings (`UI_Popup_Settings`)
+- **Layer:** Modal Overlay (Blocks input).
+- **Background:** `UI_Panel_Backdrop` (Semi-transparent tint).
+- **Contained Elements:**
+  - `UI_Btn_Close`: Top Right anchor. Action -> Closes popup.
 
 ### 11. [ASSET_AGGREGATION_CHECKLIST]
 You MUST meticulously list out all assets mentioned across all phases. Segregate them cleanly into distinct JSON arrays.

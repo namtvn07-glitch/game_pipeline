@@ -1,93 +1,11 @@
 [
-  {
-    "id": "UI_Btn_Play",
-    "description": "State transition element (Init)",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Btn_Pause",
-    "description": "State transition element (Halt)",
-    "dimensions": "128x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Btn_Resume",
-    "description": "State transition element (Resume)",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Btn_Quit",
-    "description": "State transition element (Home routing)",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Btn_Replay",
-    "description": "State transition element (Restart loop)",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Btn_Home_Return",
-    "description": "State transition element (Post-game Home)",
-    "dimensions": "256x256",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Txt_Coins",
-    "description": "Currency render geometry",
-    "dimensions": "64x64",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Txt_Score",
-    "description": "Metric calculation geometry layer",
-    "dimensions": "512x128",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Panel_Home",
-    "description": "Menu background topology",
-    "dimensions": "1080x1920",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Panel_GameOver",
-    "description": "Termination metric logic overlay",
-    "dimensions": "800x800",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_ScorePop",
-    "description": "Dynamic evaluation metric text render",
-    "dimensions": "128x64",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Txt_Combo",
-    "description": "Consecutive evaluation metric render",
-    "dimensions": "128x64",
-    "format": "png",
-    "animation_frames": 1
-  },
-  {
-    "id": "UI_Panel_PhaseUp",
-    "description": "Phase escalation logic dynamic popup",
-    "dimensions": "512x256",
-    "format": "png",
-    "animation_frames": 1
-  }
+  { "id": "UI_Btn_Booster", "description": "HUD active shield button", "dimensions": "200x200", "format": "png", "animation_frames": 1 },
+  { "id": "UI_Btn_Pause", "description": "HUD pause toggle button", "dimensions": "120x120", "format": "png", "animation_frames": 1 },
+  { "id": "UI_Btn_Resume", "description": "Resume gameplay button in Pause popup", "dimensions": "300x120", "format": "png", "animation_frames": 1 },
+  { "id": "UI_Btn_Replay", "description": "Retry button on Gameover/Pause popup", "dimensions": "300x120", "format": "png", "animation_frames": 1 },
+  { "id": "UI_Icon_Powerup", "description": "Status icon indicating active powerup buff", "dimensions": "80x80", "format": "png", "animation_frames": 3 },
+  { "id": "UI_Bar_Combo", "description": "Combo progress bar", "dimensions": "500x50", "format": "png", "animation_frames": 1 },
+  { "id": "UI_Text_Font", "description": "General font spritesheet for Score/Title texts", "dimensions": "Auto", "format": "ttf", "animation_frames": 1 },
+  { "id": "UI_Panel_Backdrop", "description": "Universal semi-transparent dark backdrop for popups", "dimensions": "1080x1920", "format": "png", "animation_frames": 1 },
+  { "id": "UI_Overlay_PhaseAlert", "description": "Warning wall flash overlay", "dimensions": "1080x1920", "format": "png", "animation_frames": 1 }
 ]

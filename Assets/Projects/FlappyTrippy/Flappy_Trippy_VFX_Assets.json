@@ -1,56 +1,12 @@
 [
-  {
-    "id": "VFX_MuzzleFlash",
-    "description": "Discharge origin particle emission",
-    "duration_sec": 0.2,
-    "particle_density": "Low"
-  },
-  {
-    "id": "VFX_HitSpark",
-    "description": "Projectile kinetic termination sequence",
-    "duration_sec": 0.3,
-    "particle_density": "Medium"
-  },
-  {
-    "id": "VFX_BlockDestroy",
-    "description": "Destruction logic visual payload",
-    "duration_sec": 0.5,
-    "particle_density": "High"
-  },
-  {
-    "id": "VFX_PlayerDeath",
-    "description": "Fatal constraint trigger payload",
-    "duration_sec": 1.0,
-    "particle_density": "High"
-  },
-  {
-    "id": "VFX_Explosion_Area",
-    "description": "Radius-based AOE kinetic payload",
-    "duration_sec": 0.6,
-    "particle_density": "High"
-  },
-  {
-    "id": "VFX_ShieldBreak",
-    "description": "Immunity negation state visual",
-    "duration_sec": 0.4,
-    "particle_density": "Medium"
-  },
-  {
-    "id": "VFX_CoinCollect",
-    "description": "Currency increment particle",
-    "duration_sec": 0.3,
-    "particle_density": "Low"
-  },
-  {
-    "id": "VFX_FeverAura",
-    "description": "Invincible logic persistent visual",
-    "duration_sec": 5.0,
-    "particle_density": "Medium"
-  },
-  {
-    "id": "VFX_PhaseTransition",
-    "description": "Environmental manipulation payload",
-    "duration_sec": 1.0,
-    "particle_density": "High"
-  }
+  { "id": "VFX_MuzzleFlash", "description": "Spark when firing", "duration_sec": 0.2, "particle_density": "Low" },
+  { "id": "VFX_Hit_Spark", "description": "Sparks on bullet hit", "duration_sec": 0.3, "particle_density": "Low" },
+  { "id": "VFX_Block_Break", "description": "Debris when block dies", "duration_sec": 0.6, "particle_density": "Medium" },
+  { "id": "VFX_Explosive_Blast", "description": "Large AoE blast from explosive block", "duration_sec": 0.8, "particle_density": "High" },
+  { "id": "VFX_Player_Death", "description": "Player explosion", "duration_sec": 1.0, "particle_density": "High" },
+  { "id": "VFX_Fever_Aura", "description": "Aura overlay during Fever", "duration_sec": 5.0, "particle_density": "Medium" },
+  { "id": "VFX_Shield_Shatter", "description": "Player shield shatter effect", "duration_sec": 0.4, "particle_density": "Medium" },
+  { "id": "VFX_Enemy_Shield_Shatter", "description": "Enemy block shield shatter effect", "duration_sec": 0.4, "particle_density": "Medium" },
+  { "id": "VFX_Phase_Shift", "description": "Speed lines when leveling up", "duration_sec": 1.5, "particle_density": "Low" },
+  { "id": "VFX_Warning_Alert", "description": "Red flashing alert for incoming wall", "duration_sec": 2.0, "particle_density": "Low" }
 ]
