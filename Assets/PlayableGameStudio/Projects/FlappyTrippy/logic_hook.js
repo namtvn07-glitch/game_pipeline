@@ -35,28 +35,30 @@ class PlayScene extends Phaser.Scene {
 
         // UI
         this.scoreText = this.add.text(this.scale.width / 2, 80, '0', {
-            fontFamily: 'Arial Black, Impact',
-            fontSize: '80px',
+            fontFamily: '"Comic Sans MS", "Chalkboard SE", "Marker Felt", sans-serif',
+            fontSize: '85px',
+            fontStyle: 'bold',
             color: '#ffffff',
             stroke: '#000000',
-            strokeThickness: 8
+            strokeThickness: 10
         }).setOrigin(0.5).setDepth(10);
         
         this.tapPromptText = this.add.text(this.scale.width / 2, this.scale.height * 0.4, 'TAP TO PLAY', {
-            fontFamily: 'Arial Black',
-            fontSize: '50px',
+            fontFamily: '"Comic Sans MS", "Chalkboard SE", "Marker Felt", sans-serif',
+            fontSize: '55px',
+            fontStyle: 'bold',
             color: '#ffffff',
             stroke: '#ff0055',
-            strokeThickness: 8
+            strokeThickness: 10
         }).setOrigin(0.5).setDepth(20);
         
         this.comboText = this.add.text(this.scale.width / 2, this.scale.height / 2, '', {
-            fontFamily: 'Arial Black, Impact',
-            fontSize: '60px',
+            fontFamily: '"Comic Sans MS", "Chalkboard SE", "Marker Felt", sans-serif',
+            fontSize: '65px',
             fontStyle: 'italic',
             color: '#ffdd00',
             stroke: '#ff0055',
-            strokeThickness: 8
+            strokeThickness: 10
         }).setOrigin(0.5).setDepth(30).setAlpha(0);
         
         this.tweens.add({
@@ -258,11 +260,13 @@ class PlayScene extends Phaser.Scene {
         
         block.hp -= 1;
         
-        // Damage effect
-        block.setTint(0xff5555);
-        this.time.delayedCall(100, () => { if (block && block.active) block.clearTint(); });
-
-        if (block.hp <= 0) {
+        if (block.hp > 0) {
+            // Damage effect only if it survives
+            block.setTint(0xff5555);
+            this.time.delayedCall(100, () => { if (block && block.active) block.clearTint(); });
+            // Just hit but not destroyed
+            this.particles.emitParticleAt(bullet.x, bullet.y, 5);
+        } else {
             // COMBO SYSTEM
             this.combo++;
             this.lastHitTime = this.time.now;
@@ -315,13 +319,6 @@ class PlayScene extends Phaser.Scene {
                 block.destroy();
                 this.addScore(1);
             }
-
-            // Hit stop (Freeze time briefly)
-            this.scene.pause();
-            setTimeout(() => { if (!this.isGameOver) this.scene.resume(); }, 50);
-        } else {
-            // Just hit but not destroyed
-            this.particles.emitParticleAt(bullet.x, bullet.y, 5);
         }
     }
 
@@ -446,11 +443,11 @@ class EndScene extends Phaser.Scene {
         graphics.fillRect(0, 0, this.scale.width, this.scale.height);
 
         // Logo
-        let logo = this.add.sprite(this.scale.width / 2, this.scale.height * 0.35, 'UI_Title_Logo').setOrigin(0.5);
+        let logo = this.add.sprite(this.scale.width / 2, this.scale.height * 0.35, 'UI_Logo').setOrigin(0.5);
         logo.setScale(0.9);
 
         // CTA Button (Using actual AI generated UI Button)
-        let ctaBtn = this.add.sprite(this.scale.width / 2, this.scale.height * 0.65, 'UI_Btn_CTA').setOrigin(0.5);
+        let ctaBtn = this.add.sprite(this.scale.width / 2, this.scale.height * 0.65, 'UI_Btn_Play').setOrigin(0.5);
         ctaBtn.setScale(1.2);
         ctaBtn.setInteractive();
 

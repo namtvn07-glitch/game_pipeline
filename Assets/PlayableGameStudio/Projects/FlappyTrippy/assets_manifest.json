@@ -7,8 +7,8 @@
     "SPR_Block_Explosive": "assets/SPR_Block_Explosive.webp",
     "SPR_Block_Moving": "assets/SPR_Block_Moving.webp",
     "SPR_Powerup_Generic": "assets/SPR_Powerup_Generic.webp",
-    "UI_Btn_CTA": "assets/UI_Btn_CTA.webp",
-    "UI_Title_Logo": "assets/UI_Title_Logo.webp",
+    "UI_Btn_Play": "assets/UI_Btn_Play.webp",
+    "UI_Logo": "assets/UI_Logo.webp",
     "SPR_BG_Layer1": "assets/SPR_BG_Layer1.webp"
   },
   "audio": {}
