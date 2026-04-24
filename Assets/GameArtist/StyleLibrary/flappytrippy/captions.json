@@ -1,0 +1,70 @@
+[
+  {
+    "filename": "1 splash.png",
+    "caption": "Shape Language: Rounded, chunky fonts. Material: high-gloss, 2D vector graphic. Complexity: polished UI. Color: vibrant yellow, pink, blue. tag: UI_Splash, material: vibrant_vector, visibility: high_contrast"
+  },
+  {
+    "filename": "2 play.png",
+    "caption": "Shape Language: Rounded, soft. Material: tactile, glossy button. Complexity: high-end mobile UI. Color: varied vibrant colors. tag: UI_Screen, material: glossy_plastic, visibility: high_contrast"
+  },
+  {
+    "filename": "3 warning.png",
+    "caption": "Shape Language: Bold, rounded. Material: smooth 2D vector, warning signs. Complexity: clear UI. Color: vibrant red, yellow. tag: UI_Screen, material: solid_colors, visibility: high_contrast"
+  },
+  {
+    "filename": "4 pause.png",
+    "caption": "Shape Language: Rounded shapes. Material: high-gloss overlays. Complexity: UI overlay. Color: semi-transparent, bright highlights. tag: UI_Screen, material: glass_overlay, visibility: high_contrast"
+  },
+  {
+    "filename": "5 game over.png",
+    "caption": "Shape Language: Bold, chunky. Material: tactile shiny text. Complexity: polished mobile UI. Color: high-contrast dark and brights. tag: UI_Screen, material: glossy_text, visibility: high_contrast"
+  },
+  {
+    "filename": "FX_G02_Bullet_001.png",
+    "caption": "Shape Language: Teardrop, streaking. Material: glowing, emissive. Complexity: simple VFX. Color: bright neon, glowing. tag: VFX_Projectile, material: emissive, visibility: high_contrast"
+  },
+  {
+    "filename": "SPR_BG_Layer1.png",
+    "caption": "Shape Language: Soft cosmic waves. Material: flat gradient. Complexity: basic background. Color: dark space blue. tag: Environment_BG, material: smooth_gradient, visibility: low_contrast"
+  },
+  {
+    "filename": "SPR_Block_Armor.png",
+    "caption": "Shape Language: Rounded square, sturdy. Material: metallic, tactile 3D bevel. Complexity: detailed prop. Color: grey, silver. tag: Prop_Obstacle, material: brushed_metal, visibility: medium_contrast"
+  },
+  {
+    "filename": "SPR_Block_Basic.png",
+    "caption": "Shape Language: Rounded square, plump. Material: smooth plastic, tactile bevel. Complexity: basic prop. Color: warm orange. tag: Prop_Obstacle, material: smooth_plastic, visibility: medium_contrast"
+  },
+  {
+    "filename": "SPR_Block_Explosive.png",
+    "caption": "Shape Language: Rounded square with warning marks. Material: matte painted, tactile. Complexity: detailed prop. Color: bright red, yellow. tag: Prop_Obstacle, material: painted_metal, visibility: high_contrast"
+  },
+  {
+    "filename": "SPR_Block_Ghost.png",
+    "caption": "Shape Language: Soft edges. Material: translucent, glowing. Complexity: ethereal prop. Color: pale cyan, glowing. tag: Prop_Obstacle, material: translucent, visibility: medium_contrast"
+  },
+  {
+    "filename": "SPR_Block_Metal.png",
+    "caption": "Shape Language: Harder rounded square. Material: shiny metal, rivets. Complexity: detailed prop. Color: steel grey, specular highlights. tag: Prop_Obstacle, material: shiny_metal, visibility: high_contrast"
+  },
+  {
+    "filename": "SPR_Block_Moving.png",
+    "caption": "Shape Language: Rounded with directional arrows. Material: metallic, glossy. Complexity: detailed prop. Color: blue, neon accents. tag: Prop_Obstacle, material: high_gloss, visibility: high_contrast"
+  },
+  {
+    "filename": "SPR_Block_Shield.png",
+    "caption": "Shape Language: Rounded with forcefield aura. Material: energy, glowing. Complexity: detailed prop. Color: cyan, glowing edges. tag: Prop_Obstacle, material: energy_shield, visibility: high_contrast"
+  },
+  {
+    "filename": "SPR_Coin.png",
+    "caption": "Shape Language: Perfect circle, chunky rim. Material: shiny gold metallic. Complexity: shiny pickup. Color: bright golden yellow. tag: Prop_Pickup, material: shiny_gold, visibility: high_contrast"
+  },
+  {
+    "filename": "SPR_Player_Idle.png",
+    "caption": "Shape Language: Chubby, cute, round bear in UFO. Material: plastic/vinyl toy, strong rim light. Complexity: highly detailed character. Color: vibrant orange, white, yellow. tag: Character_Player, material: tactile_vinyl, visibility: high_contrast"
+  },
+  {
+    "filename": "SPR_Powerup_Generic.png",
+    "caption": "Shape Language: Star or box shape, chunky. Material: glowing, glossy. Complexity: shiny pickup. Color: vibrant varied neon. tag: Prop_Pickup, material: glowing_gloss, visibility: high_contrast"
+  }
+]

@@ -3,43 +3,46 @@
     "supported_types": [
       "asset",
       "ui",
-      "prop",
-      "character_concept"
+      "character"
     ],
     "vector_keywords": [
-      "lineart",
-      "cel_shaded",
-      "flat_color",
-      "sharp_contours",
-      "ink_outlines",
-      "monochromatic",
-      "vector_illustration"
+      "casual",
+      "3d",
+      "soft",
+      "rounded",
+      "plastic",
+      "matte",
+      "glossy",
+      "vibrant",
+      "gradient",
+      "chubby",
+      "mobile",
+      "clean",
+      "toy-like",
+      "friendly",
+      "bold"
     ]
   },
   "evaluation_criteria": {
     "visual_dna": [
-      "Are shapes strictly geometrically consistent and sharply defined?",
-      "Does the asset maintain a consistent heavy outer stroke weight?",
-      "Are internal details drawn with thinner, secondary strokes?",
-      "Does the color palette map correctly to standard (single accent) or epic (neon highlights) rarities?"
+      "Are all shapes clearly rounded, chunky, and free of any sharp edges?",
+      "Does the material read firmly as soft plastic, matte, or clean glossy ceramic?",
+      "Are colors highly saturated, warm, and vibrantly cheerful?"
     ],
     "product_logic": [
-      "Does the silhouette convey the asset's function within the 3-second readability rule?",
-      "Is negative space correctly preserved?",
-      "If upgraded, does it maintain the original bounding silhouette?"
+      "Does the core asset pass the 3-second readability rule for mobile screens?",
+      "Could the silhouette be quickly identified at UI thumbnail size?"
     ],
     "technical_excellence": [
-      "Are all line details crisp and perfectly legible at 64x64px thumbnail size?",
-      "Are colors purely flat and cel-shaded without anti-aliasing blur or unwanted gradients?",
-      "Are ink layers clearly separated visually from color fills allowing modular recoloring?"
+      "Is the shading perfectly clean and entirely free from messy noise, grunge, or realistic textures?",
+      "Are the color gradients visually smooth and uniform?"
     ]
   },
   "forbidden_elements": [
-    "Soft gradients",
-    "Blurry airbrush shadowing",
-    "Photorealistic textures",
-    "Metallic shader reflections",
-    "Broken or faded outlines",
-    "Over-complicated noise patterns that break thumbnail legibility"
+    "Actual 2D flat line-art or black cartoon outlines",
+    "Sharp edges, razor-thin geometry, or aggressive spikes",
+    "Photorealistic grunge, dirt, scratches, or complex noise",
+    "Desaturated, grim, dark, or muted color palettes",
+    "Complex internal noisy details that fail to read at tiny mobile UI scales"
   ]
 }

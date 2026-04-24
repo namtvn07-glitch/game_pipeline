@@ -4,7 +4,7 @@ import os
 
 def resize_and_crop(image_path, target_width, target_height, output_path):
     try:
-        img = Image.open(image_path)
+        img = Image.open(image_path).convert("RGBA")
         img_w, img_h = img.size
         
         target_ratio = target_width / target_height
@@ -31,8 +31,9 @@ def resize_and_crop(image_path, target_width, target_height, output_path):
             right = left + target_width
             img = img.crop((left, 0, right, target_height))
             
-        img.save(output_path)
-        print(f"Resized {image_path} to {target_width}x{target_height} -> {output_path}")
+        final_img = img.convert("RGB")
+        final_img.save(output_path)
+        print(f"Center cropped and resized {image_path} to {target_width}x{target_height} -> {output_path}")
         
     except Exception as e:
         print(f"Error resizing {image_path}: {e}")

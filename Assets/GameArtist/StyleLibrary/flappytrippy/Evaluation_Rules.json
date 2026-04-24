@@ -1,0 +1,38 @@
+{
+  "semantic_metadata": {
+    "supported_types": ["asset", "ui", "character", "prop"],
+    "vector_keywords": [
+      "chubby", 
+      "glossy", 
+      "tactile", 
+      "vibrant", 
+      "plastic", 
+      "kawaii", 
+      "retro", 
+      "chunky", 
+      "high-contrast", 
+      "smooth"
+    ]
+  },
+  "evaluation_criteria": {
+    "visual_dna": [
+      "Are shapes consistently soft, rounded, and chunky without sharp angles?",
+      "Does the material look like glossy, tactile plastic or vinyl with strong rim lighting?",
+      "Is the color palette highly saturated, warm, and vibrant?"
+    ],
+    "product_logic": [
+      "Does the asset pop against a dark/cool background?",
+      "Is the function of the object instantly recognizable through its color and shape (3-second rule)?"
+    ],
+    "technical_excellence": [
+      "Are all edges anti-aliased cleanly with a transparent background?",
+      "Are the details and gradients smooth and readable when scaled down to mobile screen sizes?"
+    ]
+  },
+  "forbidden_elements": [
+    "Sharp, jagged edges or realistic aggressive proportions.",
+    "Desaturated, muddy, dull, or gritty colors.",
+    "Realistic materials like grunge, rust, or dirty metal.",
+    "Noisy, high-frequency details that break the smooth vector/vinyl aesthetic."
+  ]
+}
